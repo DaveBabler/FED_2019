@@ -1,5 +1,5 @@
 <?php
-  $connect    = mysqli_connect("mysql.yaacotu.com", "yourusername", "yourpassword","fed_db_yourname");
+  require __DIR__ . '.db.php';
   $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
 <!DOCTYPE html>
@@ -80,12 +80,9 @@
                   <select name="category" id="category" class="form-control">
                     <option value = "">Food Type</option>
                     <?php
-                      $result     = mysqli_query($connect,$query);
-                      while ($row = mysqli_fetch_array($result)){
+                        foreach($pdo->query($query) as $row){
                         echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
                       }
-                      mysqli_free_result($result);
-                      mysqli_free_result($row);
                     ?>
                   </select>
                 </th>
