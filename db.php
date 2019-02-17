@@ -1,8 +1,8 @@
 <?php
 try {
-  $username = 'yourusername';
-  $password = 'yourpassword';
-  $connection = new PDO( 'mysql:host=mysql.yaacotu.com;dbname=fed_db_yourname', $username, $password );
+  $username = 'dbabler';
+  $password = 'Db0987591';
+  $connection = new PDO( 'mysql:host=mysql.yaacotu.com;dbname=fed_db_daveb', $username, $password );
 }
 catch (PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
