@@ -1,5 +1,5 @@
 <?php
-  require __DIR__ . '.db.php';
+  include('db.php');
   $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@
                   <select name="category" id="category" class="form-control">
                     <option value = "">Food Type</option>
                     <?php
-                        foreach($pdo->query($query) as $row){
+                        foreach($connection->query($query) as $row){
                         echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
                       }
                     ?>
@@ -122,12 +122,9 @@
           <label>Food Type</label>
           <select name = "foodtype" id="foodtype" class ="form-control">
             <?php
-              $result     = mysqli_query($connect,$query);
-                while ($row = mysqli_fetch_array($result)){
-                  echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
-                }
-              mysqli_free_result($result);
-              mysqli_free_result($row);
+                        foreach($connection->query($query) as $row){
+                          echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
+                        }
             ?>
 
           </select>
