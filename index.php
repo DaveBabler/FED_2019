@@ -63,6 +63,13 @@
     <div class="container box">
       <h1 align="center">Manage Inventory</h1>
 
+      <div hidden class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>You have updated the following:</strong> 
+        <!-- fill in message here -->
+        <div id="success-img"></div>
+      </div>
+
       <div class="table-responsive">
 
         <br>
