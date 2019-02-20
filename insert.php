@@ -65,17 +65,18 @@ if(isset($_POST["operation"]))
 		);
 		if(!empty($result))
 		{
-            echo "You have updated the following: \r\n";
-            echo "The UPC you have updated is: ".$_POST["user_id"]."\r\n";
-            echo "Colloquially known as: ".$_POST["description"].".\r\n";
-            //this is a college, I insist on using more expressive verbiage --Dave Babler
-            echo "You have changed the old quantity of: ".$_SESSION['OLDQTY']."\r\n";
-            echo "for a new quantity of: ".$_POST["quantity"].".\r\n";
-            //echo "You have defined this item thusly: ".$_POST["foodtype"].".\r\n";
-            /*Note from babler; this is when using an embedded function in a database would be great if you uncomment
-            my previous echo, you'll see a number, not a name.  This can be fixed at a later with some SQL tricks
-            though I do not believe it is important to this part of the sprint--Dave Babler*/
-            echo "Please note the original quantity if this is an error, so you may change it back.";
+             echo "You have updated the following: <hr>";
+             $_SESSION["description"] = $_POST["description"];
+            // echo "The UPC you have updated is: ".$_POST["user_id"]."\r\n";
+            // echo "Colloquially known as: ".$_POST["description"].".\r\n";
+            // //this is a college, I insist on using more expressive verbiage --Dave Babler
+            // echo "You have changed the old quantity of: ".$_SESSION['OLDQTY']."\r\n";
+            // echo "for a new quantity of: ".$_POST["quantity"].".\r\n";
+            // //echo "You have defined this item thusly: ".$_POST["foodtype"].".\r\n";
+            // /*Note from babler; this is when using an embedded function in a database would be great if you uncomment
+            // my previous echo, you'll see a number, not a name.  This can be fixed at a later with some SQL tricks
+            // though I do not believe it is important to this part of the sprint--Dave Babler*/
+            // echo "Please note the original quantity if this is an error, so you may change it back.";
 		}
     }
     //session_destroy();

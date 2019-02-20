@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include('db.php');
   $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
@@ -63,10 +64,16 @@
     <div class="container box">
       <h1 align="center">Manage Inventory</h1>
 
-      <div hidden class="alert alert-success alert-dismissible">
+      <div hidden class="alert alert-success alert-dismissible" id = "insert_succeed_box">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>You have updated the following:</strong> 
         <!-- fill in message here -->
+        <p id="returned">
+        <?php 
+        $dumbass = "this sucks";
+        echo $dumbass."<hr><br>";
+        echo $_SESSION["description"]; ?>
+        </p>
         <div id="success-img"></div>
       </div>
 
@@ -276,7 +283,8 @@ $(document).ready(function(){
         contentType:false,
         processData:false,
         success:function(data) {
-          alert(data);
+          $("#insert_succeed_box").show();
+          $("#returned_insert").html("faggot");
           $('#user_form')[0].reset();
           $('#userModal').modal('hide');
           $('#user_data').DataTable().destroy();
