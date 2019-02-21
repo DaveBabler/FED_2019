@@ -74,6 +74,9 @@
         echo $dumbass."<hr><br>";
         echo $_SESSION["description"]; ?>
         </p>
+        <hr>
+        <p id ="returned_insert"></p>
+        <hr>
         <div id="success-img"></div>
       </div>
 
@@ -284,7 +287,10 @@ $(document).ready(function(){
         processData:false,
         success:function(data) {
           $("#insert_succeed_box").show();
-          $("#returned_insert").html("faggot");
+          var update_temp;
+          update_temp = test_out(description);
+
+          $("#returned_insert").html(update_temp);
           $('#user_form')[0].reset();
           $('#userModal').modal('hide');
           $('#user_data').DataTable().destroy();
@@ -460,4 +466,21 @@ $(document).ready(function(){
   });
 	
 });
+
+function test_out(descriptor_var) {
+  var string_out;
+  if(descriptor_var){
+    console.log(descriptor_var);
+    string_out = "<b>" + descriptor_var + "</b>";
+  }
+  else{
+    console.log("you suck Babler!");
+  }
+  return string_out;
+}
+
+
+/*Babler self notes:
+Probably will need to give the little x in the boxes an or maybe for the whole class of them set them to totally set the 
+divs to nothing on click*/
 </script>
