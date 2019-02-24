@@ -63,22 +63,12 @@
   <body>
     <div class="container box">
       <h1 align="center">Manage Inventory</h1>
-      <div hidden id="hide-01">
-      <!-- HELP HELP HELP HELP HELP HELP HELP HELP HELP
-      THIS CANNOT BE THE WAY TO DO THIS, THIS IS TRASHY AS HELL! 
-      I AM STORING A VARIABLE EMBEDDED IN HTML THIS CANNOT BE OK.
-       However, I simply cannot figure out how to get the previous quantity out of the AJAX call 
-       before it is updated.  This is obviously only an issue for deletes and updates not inserts. But it's kind of a huge issue.
-       DR. M, HELP?! Anybody? --- Dave Babler  -->
-      <p hidden id="hide-p-01"> this cannot be the way to do this </p>
-      </div>
       <div hidden class="alert alert-success alert-dismissible" id = "insert_succeed_box">
-   <!--  regarding * data-dismiss="alert" * DO NOT USE THIS that completely destroys the div  -->
-   <a href="#" id="alert-close-01" class="close"  aria-label="close">&times;</a>
+      <!--  regarding * data-dismiss="alert" * DO NOT USE THIS that completely destroys the div  -->
+        <a href="#" id="alert-close-01" class="close"  aria-label="close">&times;</a>
         <strong>You have updated the following:</strong> 
         <!-- fill in message here -->
-        <p id="returned_update">
-       </p>
+        <p id="returned_update"></p>
         <p id ="returned_insert"></p>
       </div>
 
@@ -172,7 +162,7 @@
 </div>
 
 <script type="text/javascript" language="javascript" >
-//var old_qty ; //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
+var prior_quant ; //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
 $(document).ready(function(){
     
   function setInputFilter(textbox, inputFilter) {
@@ -280,6 +270,7 @@ $(document).ready(function(){
     $('#user_id').val(user_id);
     var food_type=$('#foodtype').val();
     var product_image = $('#image_location').val();
+
     
     if(user_id !='' && description != '' && quantity != '' && food_type != 0) {
       $.ajax({
@@ -425,13 +416,23 @@ $(document).ready(function(){
         $('#upc').val(data.upc);
         $('#description').val(data.description);
         $('#quantity').val(data.quantity);
-        console.log('quantity value on update: ' + $('#quantity').val());
-        $("#hide-p-01").html(data.quantity);
+        console.log('quantity value prior to update: ' + $('#quantity').val());
+        prior_quant = $('#quantity').val();
+        console.log("prior quant?");
+        if(prior_quant){
+          console.log(prior_quant);
+        }else{
+          console.log('FUCK!');
+        }
+
+   
+        console.log("Prior quant!!!");
         $('.modal-title').text("Edit Item");
         $('#user_id').val(user_id);
         $('#image_location').val(data.item_image);
         $('#itemimage').attr('src',data.item_image);
         $('#foodtype').val(data.food_id);
+
         dataTable().ajax.reload();
           var category = $('#category').val();
           if(category !=''){
@@ -440,6 +441,7 @@ $(document).ready(function(){
           else{
             load_data();
           }
+          
       }
     })
   });
@@ -479,9 +481,6 @@ $(document).ready(function(){
 function confirmation_alert_data(upc_var, descriptor_var, quant_var, type_var, image_var) {
   var string_out;
   if(descriptor_var){
-
-    console.log("above is testelement below is descriptorvar");
-    console.log(descriptor_var);
     string_out = '<div class="table-responsive">';
     string_out += '<table class="table-condensed">';
     string_out += '<tbody>';
@@ -494,6 +493,10 @@ function confirmation_alert_data(upc_var, descriptor_var, quant_var, type_var, i
     string_out += '<td>'+ descriptor_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
+    string_out += '<tr>';
+    string_out += '<td>Previous Quantity: </td>';
+    string_out += '<td>' + prior_quant + '</td>';
+    string_out += '</tr>';
     string_out += '<td>Quantity changed to: </td>';
     string_out += '<td>'+ quant_var + '</td>';
     string_out += '</tr>';
@@ -504,14 +507,6 @@ function confirmation_alert_data(upc_var, descriptor_var, quant_var, type_var, i
     string_out += '<tr>';
     string_out += '<td>Looks like: </td>';
     string_out += '<td><div><img src="' + image_var + '" class="img-thumbnail" style="display: block; margin-left: none; margin-right: auto; width: 75px; height: 75px; object-fit: scale-down;"></div></td>';
-    string_out += '</tr>';
-    string_out += '<tr>';
-    string_out += '<td></td>';
-    string_out += '<td></td>';
-    string_out += '</tr>';
-    string_out += '<tr>';
-    string_out += '<td></td>';
-    string_out += '<td></td>';
     string_out += '</tr>';
     string_out += '</tbody>';
     string_out += '</table>';
