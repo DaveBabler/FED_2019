@@ -69,10 +69,7 @@
         <strong>You have updated the following:</strong> 
         <!-- fill in message here -->
         <p id="returned">
-        <?php 
-        $dumbass = "this sucks";
-        echo $dumbass."<hr><br>";
-        echo $_SESSION["description"]; ?>
+        <?php //echo "php placeholder, may not be needed";?>
         </p>
         <hr>
         <p id ="returned_insert"></p>
@@ -288,7 +285,7 @@ $(document).ready(function(){
         success:function(data) {
           $("#insert_succeed_box").show();
           var update_temp;
-          update_temp = test_out(description);
+          update_temp = test_out(description, quantity);
 
           $("#returned_insert").html(update_temp);
           $('#user_form')[0].reset();
@@ -422,7 +419,7 @@ $(document).ready(function(){
         $('#upc').val(data.upc);
         $('#description').val(data.description);
         $('#quantity').val(data.quantity);
-        $('.modal-title').text("Edit Item");
+        $('.modal-title').text("I'm dubious Edit Item"); //babler made a textual testing change here, delete it
         $('#user_id').val(user_id);
         $('#image_location').val(data.item_image);
         $('#itemimage').attr('src',data.item_image);
@@ -467,11 +464,13 @@ $(document).ready(function(){
 	
 });
 
-function test_out(descriptor_var) {
+function test_out(descriptor_var, quant_var) {
   var string_out;
   if(descriptor_var){
-    console.log(descriptor_var);
-    string_out = "<b>" + descriptor_var + "</b>";
+    console.log(descriptor_var, quant_var);
+    string_out = "Item: " + descriptor_var + "<br>";
+    string_out = string_out + "Quantity of: " + quant_var + "<br>";
+    string_out = string_out + "<br>Previous Quantity of: " + <?php echo $_SESSION['OLDQTY']; ?> +"<hr><br>";
   }
   else{
     console.log("you suck Babler!");
