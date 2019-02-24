@@ -65,8 +65,9 @@ if(isset($_POST["operation"]))
 		);
 		if(!empty($result))
 		{
-             echo "You have updated the following: <hr>";
-             $_SESSION["description"] = $_POST["description"];
+            session_destroy();
+             //echo "You have updated the following: <hr>";
+             //$_SESSION["description"] = $_POST["description"];
             // echo "The UPC you have updated is: ".$_POST["user_id"]."\r\n";
             // echo "Colloquially known as: ".$_POST["description"].".\r\n";
             // //this is a college, I insist on using more expressive verbiage --Dave Babler
