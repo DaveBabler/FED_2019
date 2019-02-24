@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="string_building.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -282,7 +283,7 @@ $(document).ready(function(){
         success:function(data) {
           $("#insert_succeed_box").show();
    
-          var update_temp = confirmation_alert_data(user_id, description, quantity, food_type,  product_image);
+          var update_temp = update_confirmation_builder(user_id, description, quantity, food_type,  product_image);
           
           $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
@@ -472,45 +473,7 @@ $(document).ready(function(){
 
 });
 
-function confirmation_alert_data(upc_var, descriptor_var, quant_var, type_var, image_var) {
-  var string_out;
-  if(descriptor_var){
-    string_out = '<div class="table-responsive">';
-    string_out += '<table class="table-condensed">';
-    string_out += '<tbody>';
-    string_out += '<tr>';
-    string_out += '<td>UPC updated: </td>';
-    string_out += '<td>'+ upc_var + '</td>';
-    string_out += '</tr>';
-    string_out += '<tr>';
-    string_out += '<td>Colloquially known as: </td>';
-    string_out += '<td>'+ descriptor_var + '</td>';
-    string_out += '</tr>';
-    string_out += '<tr>';
-    string_out += '<tr>';
-    string_out += '<td>Previous Quantity: </td>';
-    string_out += '<td>' + prior_quant + '</td>';
-    string_out += '</tr>';
-    string_out += '<td>Quantity changed to: </td>';
-    string_out += '<td>'+ quant_var + '</td>';
-    string_out += '</tr>';
-    string_out += '<tr>';
-    string_out += '<td>Product Type is of: </td>';
-    string_out += '<td>' + type_var + '</td>';
-    string_out += '</tr>';
-    string_out += '<tr>';
-    string_out += '<td>Looks like: </td>';
-    string_out += '<td><div><img src="' + image_var + '" class="img-thumbnail" style="display: block; margin-left: none; margin-right: auto; width: 75px; height: 75px; object-fit: scale-down;"></div></td>';
-    string_out += '</tr>';
-    string_out += '</tbody>';
-    string_out += '</table>';
-    string_out += '</div>';
-  }
-  else{
-    console.log("you suck at coding Babler!");
-  }
-  return string_out;
-}
+
  function wipe_data(alert_id_num){
   //takes the last two digits of an alert's id concatenates and wipes the text
   //Dave Babler
