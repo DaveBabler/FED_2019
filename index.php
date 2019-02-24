@@ -283,7 +283,7 @@ $(document).ready(function(){
           $("#insert_succeed_box").show();
    
           var update_temp = confirmation_alert_data(user_id, description, quantity, food_type,  product_image);
-
+          
           $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
           $('#userModal').modal('hide');
@@ -295,6 +295,9 @@ $(document).ready(function(){
           else{
             load_data();
           }
+          //bounce back to the top, 
+          bounce_to_top();
+
         }
       });
     }
@@ -418,15 +421,6 @@ $(document).ready(function(){
         $('#quantity').val(data.quantity);
         console.log('quantity value prior to update: ' + $('#quantity').val());
         prior_quant = $('#quantity').val();
-        console.log("prior quant?");
-        if(prior_quant){
-          console.log(prior_quant);
-        }else{
-          console.log('FUCK!');
-        }
-
-   
-        console.log("Prior quant!!!");
         $('.modal-title').text("Edit Item");
         $('#user_id').val(user_id);
         $('#image_location').val(data.item_image);
@@ -534,9 +528,12 @@ function confirmation_alert_data(upc_var, descriptor_var, quant_var, type_var, i
    // $(target_box).hide();
  
      
-  }); 
+  });   
  }
 
+function bounce_to_top(){
+  window.scrollTo(0,0);
+}
 
 /*Babler self notes:
 Probably will need to give the little x in the boxes an or maybe for the whole class of them set them to totally set the 
