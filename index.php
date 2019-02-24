@@ -63,17 +63,22 @@
   <body>
     <div class="container box">
       <h1 align="center">Manage Inventory</h1>
-
+      <div hidden id="hide-01">
+      <!-- HELP HELP HELP HELP HELP HELP HELP HELP HELP
+      THIS CANNOT BE THE WAY TO DO THIS, THIS IS TRASHY AS HELL! 
+      I AM STORING A VARIABLE EMBEDDED IN HTML THIS CANNOT BE OK.
+       However, I simply cannot figure out how to get the previous quantity out of the AJAX call 
+       before it is updated.  This is obviously only an issue for deletes and updates not inserts. But it's kind of a huge issue.
+       DR. M, HELP?! Anybody? --- Dave Babler  -->
+      <p hidden id="hide-p-01"> this cannot be the way to do this </p>
+      </div>
       <div hidden class="alert alert-success alert-dismissible" id = "insert_succeed_box">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+   <!--  regarding * data-dismiss="alert" * DO NOT USE THIS that completely destroys the div  -->
+   <a href="#" id="alert-close-01" class="close"  aria-label="close">&times;</a>
         <strong>You have updated the following:</strong> 
         <!-- fill in message here -->
-        <p id="returned">
-        <?php 
-        $dumbass = "this sucks";
-        echo $dumbass."<hr><br>";
-        echo $_SESSION["description"]; ?>
-        </p>
+        <p id="returned_update">
+       </p>
         <hr>
         <p id ="returned_insert"></p>
         <hr>
@@ -170,6 +175,7 @@
 </div>
 
 <script type="text/javascript" language="javascript" >
+var old_qty; //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
 $(document).ready(function(){
     
   function setInputFilter(textbox, inputFilter) {
@@ -287,10 +293,11 @@ $(document).ready(function(){
         processData:false,
         success:function(data) {
           $("#insert_succeed_box").show();
+   
           var update_temp;
           update_temp = test_out(description);
 
-          $("#returned_insert").html(update_temp);
+          $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
           $('#userModal').modal('hide');
           $('#user_data').DataTable().destroy();
@@ -422,6 +429,8 @@ $(document).ready(function(){
         $('#upc').val(data.upc);
         $('#description').val(data.description);
         $('#quantity').val(data.quantity);
+        console.log('quantity value on update: ' + $('#quantity').val());
+        $("#hide-p-01").html(data.quantity);
         $('.modal-title').text("Edit Item");
         $('#user_id').val(user_id);
         $('#image_location').val(data.item_image);
@@ -464,20 +473,46 @@ $(document).ready(function(){
       return false;	
     }
   });
-	
+  $('.alert .close').on('click', function(e) {
+    $(this).parent().hide();
+    //wipe_data("01");
+});
+
 });
 
 function test_out(descriptor_var) {
   var string_out;
   if(descriptor_var){
+
+    console.log("above is testelement below is descriptorvar");
     console.log(descriptor_var);
     string_out = "<b>" + descriptor_var + "</b>";
+    string_out += "echo post? <p id = 'tester09'></p>;";
   }
   else{
     console.log("you suck Babler!");
   }
   return string_out;
 }
+ function wipe_data(alert_id_num){
+  //takes the last two digits of an alert's id concatenates and wipes the text
+  //Dave Babler
+  var event_origin = "alert-close-" + alert_id_num;
+  var target_alert;
+  var target_box;
+  switch (alert_id_num) {
+    case "01":
+      target_alert = "returned_update";
+      target_box = "insert_succeed_box";
+      break;
+  }
+  $(event_origin).click(function(){
+   $(target_alert).empty();
+   // $(target_box).hide();
+ 
+     
+  }); 
+ }
 
 
 /*Babler self notes:
