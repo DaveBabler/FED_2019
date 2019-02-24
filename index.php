@@ -79,10 +79,7 @@
         <!-- fill in message here -->
         <p id="returned_update">
        </p>
-        <hr>
         <p id ="returned_insert"></p>
-        <hr>
-        <div id="success-img"></div>
       </div>
 
       <div class="table-responsive">
@@ -175,7 +172,7 @@
 </div>
 
 <script type="text/javascript" language="javascript" >
-var old_qty; //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
+//var old_qty ; //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
 $(document).ready(function(){
     
   function setInputFilter(textbox, inputFilter) {
@@ -294,8 +291,7 @@ $(document).ready(function(){
         success:function(data) {
           $("#insert_succeed_box").show();
    
-          var update_temp;
-          update_temp = test_out(description, quantity);
+          var update_temp = confirmation_alert_data(user_id, description, quantity, food_type,  product_image);
 
           $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
@@ -480,17 +476,49 @@ $(document).ready(function(){
 
 });
 
-function test_out(descriptor_var, quant_var) {
+function confirmation_alert_data(upc_var, descriptor_var, quant_var, type_var, image_var) {
   var string_out;
   if(descriptor_var){
 
     console.log("above is testelement below is descriptorvar");
     console.log(descriptor_var);
-    string_out = "<b>" + descriptor_var + "</b>";
-    string_out += "echo post? <p id = 'tester09'></p>;";
+    string_out = '<div class="table-responsive">';
+    string_out += '<table class="table-condensed">';
+    string_out += '<tbody>';
+    string_out += '<tr>';
+    string_out += '<td>UPC updated: </td>';
+    string_out += '<td>'+ upc_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Colloquially known as: </td>';
+    string_out += '<td>'+ descriptor_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Quantity changed to: </td>';
+    string_out += '<td>'+ quant_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Product Type is of: </td>';
+    string_out += '<td>' + type_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Looks like: </td>';
+    string_out += '<td><div><img src="' + image_var + '" class="img-thumbnail" style="display: block; margin-left: none; margin-right: auto; width: 75px; height: 75px; object-fit: scale-down;"></div></td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td></td>';
+    string_out += '<td></td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td></td>';
+    string_out += '<td></td>';
+    string_out += '</tr>';
+    string_out += '</tbody>';
+    string_out += '</table>';
+    string_out += '</div>';
   }
   else{
-    console.log("you suck Babler!");
+    console.log("you suck at coding Babler!");
   }
   return string_out;
 }
