@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
+    <!-- begin our custom scripts -->
     <script type="text/javascript" src="string_building.js"></script>
+    <script type="text/javascript" src="workhorse.js"></script>
+    <!-- end our custom scripts -->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -163,7 +166,9 @@
 </div>
 
 <script type="text/javascript" language="javascript" >
-var prior_quant ; //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
+ //declaring this here because I am getting frustrated and might throw my computer out of my window--Babler
+  var prior_quant  = '';
+  var type_of_insertion = '';
 $(document).ready(function(){
     
   function setInputFilter(textbox, inputFilter) {
@@ -228,6 +233,7 @@ $(document).ready(function(){
     $('.modal-title').text("Add Item");
     $('#action').val("Add");
     $('#operation').val("Add");
+    type_of_insertion = "SQL_Insert";
   });
     
 	
@@ -297,7 +303,7 @@ $(document).ready(function(){
             load_data();
           }
           //bounce back to the top, 
-          bounce_to_top();
+          bounce_up_init_vars();
 
         }
       });
@@ -396,6 +402,7 @@ $(document).ready(function(){
   });
   
   $(document).on('click', '.update', function() {
+    type_of_insertion = "SQL_Update";
     var user_id = $(this).attr("id");
     $('.fas').css('display','none');
     $('#description').prop('readonly',false);
@@ -474,29 +481,7 @@ $(document).ready(function(){
 });
 
 
- function wipe_data(alert_id_num){
-  //takes the last two digits of an alert's id concatenates and wipes the text
-  //Dave Babler
-  var event_origin = "alert-close-" + alert_id_num;
-  var target_alert;
-  var target_box;
-  switch (alert_id_num) {
-    case "01":
-      target_alert = "returned_update";
-      target_box = "insert_succeed_box";
-      break;
-  }
-  $(event_origin).click(function(){
-   $(target_alert).empty();
-   // $(target_box).hide();
- 
-     
-  });   
- }
 
-function bounce_to_top(){
-  window.scrollTo(0,0);
-}
 
 /*Babler self notes:
 Probably will need to give the little x in the boxes an or maybe for the whole class of them set them to totally set the 
