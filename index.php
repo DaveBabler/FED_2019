@@ -450,6 +450,25 @@ $(document).ready(function(){
 	
   $(document).on('click', '.delete', function(){
     var user_id = $(this).attr("id");
+    var del_quantity;
+    var del_description;
+    var del_image;
+    $.ajax({
+      url:"fetch_single.php",
+      method:"POST",
+      data:{user_id:user_id},
+      dataType:"json",
+      success:function(data) {
+        $('#upc').val(data.upc);
+        $('#description').val(data.description);
+        $('#quantity').val(data.quantity);
+        $('#image_location').val(data.item_image);
+        del_quantity = $('#quantity').val();
+        del_description = $('#description').val();
+        del_image = $('#image_location').val();
+
+      }
+    });
     if(confirm("Are you sure you want to delete this?")) {
       $.ajax({
           url:"delete.php",
@@ -467,6 +486,7 @@ $(document).ready(function(){
               load_data();
             }
           }
+          
       });
     }
     else {
