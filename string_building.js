@@ -1,4 +1,4 @@
-function alert_type_summon(outer_type_of_insertion, outer_upc_var, outer_descript_var, outer_quant_var, outer_type_var, outer_image_var){
+function alert_type_summon(outer_type_of_insertion, outer_upc_var, outer_descript_var, outer_quant_var, outer_type_var = 0, outer_image_var = 0){
   let outputted_string;
   switch(outer_type_of_insertion) {
     case "SQL_Update":    

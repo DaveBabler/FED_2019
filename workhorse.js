@@ -25,3 +25,5 @@ function wipe_data(alert_id_num){
     //reset the variable type
     type_of_insertion = "";
   }
+
+  //oberon picture for product testing http://i63.tinypic.com/2wex3z5.jpg oberon upc 740522110657
