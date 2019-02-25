@@ -70,7 +70,7 @@
       <div hidden class="alert alert-success alert-dismissible" id = "insert_succeed_box">
       <!--  regarding * data-dismiss="alert" * DO NOT USE THIS that completely destroys the div  -->
         <a href="#" id="alert-close-01" class="close"  aria-label="close">&times;</a>
-        <strong>You have updated the following:</strong> 
+        <strong>The following has changed:</strong> 
         <!-- fill in message here -->
         <p id="returned_update"></p>
         <p id ="returned_insert"></p>
@@ -289,8 +289,8 @@ $(document).ready(function(){
         success:function(data) {
           $("#insert_succeed_box").show();
    
-          var update_temp = update_confirmation_builder(user_id, description, quantity, food_type,  product_image);
-          
+          var update_temp = alert_type_summon(type_of_insertion, user_id, description, quantity, food_type,  product_image);
+          console.log(update_temp);
           $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
           $('#userModal').modal('hide');
