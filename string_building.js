@@ -8,6 +8,13 @@ function alert_type_summon(outer_type_of_insertion, outer_upc_var, outer_descrip
     case "SQL_Insert":
       outputted_string = insert_confirmation_builder(outer_upc_var, outer_descript_var, outer_quant_var, outer_type_var, outer_image_var);
       break;
+    case "SQL_Delete":
+      outputted_string = delete_confirmation_builder(outer_upc_var, outer_descript_var, outer_quant_var, outer_image_var);
+      console.log(outputted_string);
+      break;
+    default:
+      outputted_string = "<h3> a significant error has occurred in module alert_type_summon";
+
 
   }
   return outputted_string;
@@ -74,6 +81,38 @@ function insert_confirmation_builder(upc_var, descriptor_var, quant_var, type_va
     string_out += '<tr>';
     string_out += '<td>Product Type is of: </td>';
     string_out += '<td>' + type_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Looks like: </td>';
+    string_out += '<td><div><img src="' + image_var + '" class="img-thumbnail" style="display: block; margin-left: none; margin-right: auto; width: 75px; height: 75px; object-fit: scale-down;"></div></td>';
+    string_out += '</tr>';
+    string_out += '</tbody>';
+    string_out += '</table>';
+    string_out += '</div>';
+  }
+  else{
+    console.log("you still suck at coding Babler!");
+  }
+  return string_out;
+}
+
+function delete_confirmation_builder(upc_var, descriptor_var, quant_var, image_var) {
+  var string_out;
+  if(descriptor_var){
+    string_out = '<div class="table-responsive">';
+    string_out += '<table class="table-condensed">';
+    string_out += '<tbody>';
+    string_out += '<tr>';
+    string_out += '<td>UPC: </td>';
+    string_out += '<td>'+ upc_var + '<i> has been purged from the database, the only way to undo this, is to copy this data and re-insert </i></td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Colloquially known as: </td>';
+    string_out += '<td>'+ descriptor_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Quantity removed: </td>';
+    string_out += '<td>'+ quant_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
     string_out += '<td>Looks like: </td>';

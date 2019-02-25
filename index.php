@@ -73,8 +73,15 @@
         <strong>The following has changed:</strong> 
         <!-- fill in message here -->
         <p id="returned_update"></p>
-        <p id ="returned_insert"></p>
       </div>
+      <div hidden class="alert alert-danger alert-dismissible" id = "delete_succeed_box">
+      <!--  regarding * data-dismiss="alert" * DO NOT USE THIS that completely destroys the div  -->
+        <a href="#" id="alert-close-02" class="close"  aria-label="close">&times;</a>
+        <strong>The following has changed:</strong> 
+        <!-- fill in message here -->
+        <p id="returned_delete"></p>
+      </div>
+
 
       <div class="table-responsive">
 
@@ -453,6 +460,7 @@ $(document).ready(function(){
     var del_quantity;
     var del_description;
     var del_image;
+ 
     $.ajax({
       url:"fetch_single.php",
       method:"POST",
@@ -466,7 +474,14 @@ $(document).ready(function(){
         del_quantity = $('#quantity').val();
         del_description = $('#description').val();
         del_image = $('#image_location').val();
-
+        type_of_insertion = "SQL_Delete";
+        console.log(user_id);
+      console.log(del_description);
+      console.log(del_quantity);
+      console.log(del_image);
+      var delete_temp = alert_type_summon(type_of_insertion, user_id, del_description, del_quantity, del_image);
+      $("#returned_delete").html(delete_temp);
+        console.log(delete_temp);
       }
     });
     if(confirm("Are you sure you want to delete this?")) {
@@ -486,8 +501,11 @@ $(document).ready(function(){
               load_data();
             }
           }
-          
+
       });
+      $("#delete_succeed_box").show();
+
+        bounce_up_init_vars();
     }
     else {
       return false;	

@@ -10,12 +10,14 @@ function wipe_data(alert_id_num){
         target_alert = "returned_update";
         target_box = "insert_succeed_box";
         break;
+      case "02":
+        target_alert = "returned_delete";
+        target_box = "delete_succeed_box";
     }
     $(event_origin).click(function(){
      $(target_alert).empty();
-     // $(target_box).hide();
-   
-       
+     // $(target_box).hide(); currently not needed, but ... leaving it in because
+        
     });   
    }
   
