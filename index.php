@@ -283,9 +283,7 @@ $(document).ready(function(){
     var user_id = $('#upc').val();
     $('#user_id').val(user_id);
     var food_type=$('#foodtype').val();
-    var product_image = $('#image_location').val();
-
-    
+   
     if(user_id !='' && description != '' && quantity != '' && food_type != 0) {
       $.ajax({
         url:"insert.php",
@@ -294,18 +292,20 @@ $(document).ready(function(){
         contentType:false,
         processData:false,
         success:function(data) {
+          //show bootstrap success box and do the prepwork to get the data in it
           $("#insert_succeed_box").show();
-          console.log(food_type);
+          //see notes on string_building.js about this object 
           var str_upd_ins_obj = {
-          outer_upc_var: user_id,
-          outer_descript_var: description,
-          outer_quant_var: quantity,
-          outer_type_var:  food_type,
-          outer_image_var: product_image,
+          outer_upc_var: $('#upc').val(),
+          outer_descript_var: $('#description').val(),
+          outer_quant_var: $('#quantity').val(),
+          outer_type_var:  $('#foodtype').val(),
+          outer_image_var: $('#image_location').val(),
           };          
-          console.log(str_upd_ins_obj);
+          //console.log(str_upd_ins_obj);
+          //continue building the stringified HTML for the bootstrap alert
           var update_temp = alert_type_summon_arguments(type_of_insertion, str_upd_ins_obj);
-          console.log(update_temp);
+          //console.log(update_temp);
           $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
           $('#userModal').modal('hide');
@@ -317,7 +317,7 @@ $(document).ready(function(){
           else{
             load_data();
           }
-          //bounce back to the top, 
+          //bounce back to the top, close the boot strap box, purge the data from it.
           bounce_up_init_vars();
 
         }
@@ -442,7 +442,7 @@ $(document).ready(function(){
         $('#upc').val(data.upc);
         $('#description').val(data.description);
         $('#quantity').val(data.quantity);
-        console.log('quantity value prior to update: ' + $('#quantity').val());
+        //console.log('quantity value prior to update: ' + $('#quantity').val());
         prior_quant = $('#quantity').val();
         $('.modal-title').text("Edit Item");
         $('#user_id').val(user_id);
@@ -479,26 +479,19 @@ $(document).ready(function(){
         $('#description').val(data.description);
         $('#quantity').val(data.quantity);
         $('#image_location').val(data.item_image);
-        del_quantity = $('#quantity').val();
-        del_description = $('#description').val();
-        del_image = $('#image_location').val();
+     
         type_of_insertion = "SQL_Delete";
-        console.log(user_id);
-      console.log(del_description);
-      console.log(del_quantity);
-      console.log(del_image);
-      var inc_del_obj = {
-        outer_upc_var: user_id,
-        outer_descript_var: del_description,
-        outer_quant_var: del_quantity,
-        outer_image_var: del_image,
-      };  
-
-      console.log(inc_del_obj);
-      
+        //this object helps build the bootstrap alert for deletions
+        var inc_del_obj = {
+          outer_upc_var: user_id,
+          outer_descript_var:    $('#description').val().toString(),
+          outer_quant_var:   $('#quantity').val().toString(),
+          outer_image_var: $('#image_location').val().toString(),
+        };  
+      //this stringified html is part of the bootstrap box
       var delete_temp = alert_type_summon_arguments(type_of_insertion, inc_del_obj);
       $("#returned_delete").html(delete_temp);
-        console.log(delete_temp);
+        //console.log(delete_temp);
       }
     });
     if(confirm("Are you sure you want to delete this?")) {
@@ -521,7 +514,7 @@ $(document).ready(function(){
 
       });
       $("#delete_succeed_box").show();
-
+      //show ^ then v  purge and close the warning box on click
         bounce_up_init_vars();
     }
     else {
@@ -537,8 +530,4 @@ $(document).ready(function(){
 
 
 
-
-/*Babler self notes:
-Probably will need to give the little x in the boxes an or maybe for the whole class of them set them to totally set the 
-divs to nothing on click*/
 </script>
