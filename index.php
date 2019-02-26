@@ -295,8 +295,16 @@ $(document).ready(function(){
         processData:false,
         success:function(data) {
           $("#insert_succeed_box").show();
-   
-          var update_temp = alert_type_summon(type_of_insertion, user_id, description, quantity, food_type,  product_image);
+          console.log(food_type);
+          var str_upd_ins_obj = {
+          outer_upc_var: user_id,
+          outer_descript_var: description,
+          outer_quant_var: quantity,
+          outer_type_var:  food_type,
+          outer_image_var: product_image,
+          };          
+          console.log(str_upd_ins_obj);
+          var update_temp = alert_type_summon_arguments(type_of_insertion, str_upd_ins_obj);
           console.log(update_temp);
           $("#returned_update").html(update_temp);
           $('#user_form')[0].reset();
@@ -479,7 +487,16 @@ $(document).ready(function(){
       console.log(del_description);
       console.log(del_quantity);
       console.log(del_image);
-      var delete_temp = alert_type_summon(type_of_insertion, user_id, del_description, del_quantity, del_image);
+      var inc_del_obj = {
+        outer_upc_var: user_id,
+        outer_descript_var: del_description,
+        outer_quant_var: del_quantity,
+        outer_image_var: del_image,
+      };  
+
+      console.log(inc_del_obj);
+      
+      var delete_temp = alert_type_summon_arguments(type_of_insertion, inc_del_obj);
       $("#returned_delete").html(delete_temp);
         console.log(delete_temp);
       }
