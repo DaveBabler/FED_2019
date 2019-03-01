@@ -22,6 +22,6 @@ if(isset($_POST["typeid_in"])){
     $verbose_description = "invalid selection";
 }
 
-echo $verbose_description;
+echo json_encode($verbose_description);
 
 ?>

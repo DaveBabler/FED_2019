@@ -283,7 +283,7 @@ $(document).ready(function(){
     var user_id = $('#upc').val();
     $('#user_id').val(user_id);
     var food_type=$('#foodtype').val();
-   
+    var food_type_string = ""; //use this to grab the textual food type.
     if(user_id !='' && description != '' && quantity != '' && food_type != 0) {
       $.ajax({
         url:"insert.php",
@@ -292,14 +292,25 @@ $(document).ready(function(){
         contentType:false,
         processData:false,
         success:function(data) {
+          //begin secondary AJAX call
+
           //show bootstrap success box and do the prepwork to get the data in it
           $("#insert_succeed_box").show();
+          //grab the proper name of the food type
+          var properType = getFoodType($('#foodtype').val());
+          console.log("new logic");
+          console.log(properType);
+          console.log("new logic");
+
+
+
+
           //see notes on string_building.js about this object 
           var str_upd_ins_obj = {
           outer_upc_var: $('#upc').val(),
           outer_descript_var: $('#description').val(),
           outer_quant_var: $('#quantity').val(),
-          outer_type_var:  $('#foodtype').val(),
+          outer_type_var:  properType,
           outer_image_var: $('#image_location').val(),
           };          
           //console.log(str_upd_ins_obj);
