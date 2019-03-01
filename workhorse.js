@@ -27,5 +27,23 @@ function wipe_data(alert_id_num){
     //reset the variable type
     type_of_insertion = "";
   }
+  function getFoodType(numericTypeID){
+    let newData;
+    $.ajax({
+    url:"pdo_select_type.php",
+    async: false, 
+    method:'POST',
+    dataType:'json',
+    data: {typeid_in: numericTypeID,
+    },
 
+    success: function(result) {
+            newData = result;
+            console.log(result);
+            $("#ajaxresponse").html(result);
+    }
+
+    });
+  return newData;
+  }
   //oberon picture for product testing http://i63.tinypic.com/2wex3z5.jpg oberon upc 740522110657
