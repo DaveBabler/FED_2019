@@ -51,7 +51,7 @@ function update_confirmation_builder(upc_var, descriptor_var, quant_var, type_va
     string_out += '<td>'+ upc_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
-    string_out += '<td>Colloquially known as: </td>';
+    string_out += '<td>Description: </td>';
     string_out += '<td>'+ descriptor_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
@@ -91,7 +91,7 @@ function insert_confirmation_builder(upc_var, descriptor_var, quant_var, type_va
     string_out += '<td>'+ upc_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
-    string_out += '<td>Colloquially known as: </td>';
+    string_out += '<td>Description: </td>';
     string_out += '<td>'+ descriptor_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
@@ -127,7 +127,7 @@ function delete_confirmation_builder(upc_var, descriptor_var, quant_var, image_v
     string_out += '<td>'+ upc_var + '<i> has been purged from the database, the only way to undo this, is to copy this data and re-insert </i></td>';
     string_out += '</tr>';
     string_out += '<tr>';
-    string_out += '<td>Colloquially known as: </td>';
+    string_out += '<td>Description: </td>';
     string_out += '<td>'+ descriptor_var + '</td>';
     string_out += '</tr>';
     string_out += '<tr>';
