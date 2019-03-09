@@ -3,6 +3,11 @@ session_start();
 include('db.php');
 include('function.php');
 
+$trimmedSearchValue = $_POST["search"]["value"];
+$leadingZero = 0;
+//drop leading zeros
+$trimmedSearchValue = ltrim($trimmedSearchValue, $leadingZero);
+
 $query = '';
 $output = array();
 $query .= "SELECT * FROM `INVENTORY` INNER JOIN `INV_TYPE` ON `INV_TYPE`.`TYPE_ID` =`INVENTORY`.`TYPE_ID`";
@@ -14,7 +19,7 @@ if(isset($_POST["search"]["value"]))
 {
 	$query .= '( INVENTORY.DESCRIPTION LIKE "%'.$_POST["search"]["value"].'%" ';
     $query .= 'OR INV_TYPE.TYPE_DESCRIPTION LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR CAST(UPC AS CHAR) LIKE "%'.$_POST["search"]["value"].'%" )';
+	$query .= 'OR CAST(UPC AS CHAR) LIKE "%'.$trimmedSearchValue.'%" )';
 }
 if(isset($_POST["order"]))
 {
