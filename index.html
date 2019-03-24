@@ -55,6 +55,9 @@
           width: 400px;
       }
     </style>
+    <script>
+        var accessAttempts = 0;
+    </script>
   </head>
   <body>
     <div class="container-fluid">
@@ -118,13 +121,48 @@
     </div>
     <div>
         <h3>WARNING: This is a work in progress; to go to the inventory page while this page is in development follow the link below</h3>
-        <a href="http://dbabler.yaacotu.com/FED_2019/index.php">Inventory </a></div>
+        <a href="http://dbabler.yaacotu.com/FED_2019/inventoryMain.php">Inventory </a></div>
   </body>
   <script>
       $(document).ready(function(){
         $(document).on('submit', '#credForm', function(event) {
             event.preventDefault();
-            $.fn.buttlert($('#emailUser').val(), $('#passwordUser').val());
+            //notes below from Dave Babler
+            //we are going to append data to a form before sending it via AJAX
+            //first we need to assign the form to a variable
+            var credentialForm = document.getElementById('credForm');
+            //we must instantiate the object of FormData
+            var credFormSubmission = new FormData(credentialForm);
+            //now we will append the amount of access attempts to the form being sent
+            //am using TRIES as a synonym for access attempts to differentiate how the variables are created and passed.
+            //and how which is value, and which turns into a POST variable. ($_POST, localvar)
+            credFormSubmission.append("TRIES", accessAttempts);
+
+            $.ajax({
+                url:"Credential\\CredCheck.php", 
+                method: 'POST', 
+                data: credFormSubmission, 
+                contentType: false, 
+                processData: false,   //prevent default data parsing behavior
+                dataType: "json", 
+                success:function(phpResponse) {
+                    $("#passwordUser").empty();
+                    let lv_role = phpResponse.ROLEID;
+                    let lv_access = phpResponse.GRANT_ACCESS;
+                    if (lv_access === true) {
+                        //reset the accessAttempts variable
+                        accessAttempts = 0;
+                        //send them on their way!
+
+                    }else 
+                    accessAttempts++;
+
+                }
+
+
+            })
+
+      
          
         });
 
