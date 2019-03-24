@@ -148,10 +148,12 @@
                 success:function(phpResponse) {
                     $("#passwordUser").empty();
                     let lv_role = phpResponse.ROLEID;
+                    alert(lv_role);
                     let lv_access = phpResponse.GRANT_ACCESS;
                     if (lv_access === true) {
                         //reset the accessAttempts variable
                         accessAttempts = 0;
+                        CREDENTIAL.sendToRolePage(lv_role);
                         //send them on their way!
 
                     }else 
