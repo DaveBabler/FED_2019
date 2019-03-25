@@ -57,6 +57,7 @@
     </style>
     <script>
         var accessAttempts = 0;
+        var credType = '';
     </script>
   </head>
   <body>
@@ -95,12 +96,25 @@
                                                 </label>
                                                 <input type="password" class="form-control" name="passwordUser" id="passwordUser" />
                                             </div>
+                                            <div class="form-group collapse" id="passVerifyDiv">
+                                                 
+                                                    <label for="passVerify">
+                                                        Re-Type Password Here.
+                                                    </label>
+                                                    <input type="password" class="form-control" name="passVerify" id="passVerify" />
+                                                </div>
+                                            <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="newRecipientCheck">
+                                                    <label class="form-check-label" for="newRecipientCheck">New Recipient? Check here.</label>
+                                            </div>
+                                                 
                                             <button type="submit" class="btn btn-primary" name="formSubmit" id="formSubmit">
                                                 Submit
                                             </button>
                                         </form>
                             </div>
                             <div class="col-md-4">
+                                <br> <!-- new break -->
                             </div>
                         </div>
                     </div>
@@ -119,12 +133,32 @@
             </div>
         </div>
     </div>
-    <div>
+<!--     <div>
         <h3>WARNING: This is a work in progress; to go to the inventory page while this page is in development follow the link below</h3>
-        <a href="http://dbabler.yaacotu.com/FED_2019/inventoryMain.php">Inventory </a></div>
+        <a href="http://dbabler.yaacotu.com/FED_2019/inventoryMain.php">Inventory </a></div> -->
   </body>
   <script>
       $(document).ready(function(){
+        $('#credForm :checkbox').change(function(){
+            if($(this).is(':checked')){
+                $('#passVerifyDiv').collapse("toggle");
+                credType = "NEW";
+
+            }else{
+                //unchecked
+                $('#passVerifyDiv').collapse("toggle");
+                //reset attempts to  default state.
+                accessAttempts = 0;
+                //assume current user
+                credType = 'CURRENT';
+            }
+        });
+
+
+
+
+
+
         $(document).on('submit', '#credForm', function(event) {
             event.preventDefault();
             //notes below from Dave Babler
@@ -137,6 +171,7 @@
             //am using TRIES as a synonym for access attempts to differentiate how the variables are created and passed.
             //and how which is value, and which turns into a POST variable. ($_POST, localvar)
             credFormSubmission.append("TRIES", accessAttempts);
+            credFormSubmission.append("CREDENTIAL_NEEDED", credType);
 
             $.ajax({
                 url:"Credential\\CredCheck.php", 
