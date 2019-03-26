@@ -3,20 +3,22 @@
     Author: Dave Babler 
     Date: 2019-03-23
 */
-
-
-CREDENTIAL = {
-
-    buttlert: function (x, y) {
+DEBUGGING = {
+        //Debugging namespace by Dave Babler  
+    debugButtonAlert: function (x, y) {
         //create an alert when the button is pressed.
         //this is good for debugging --Dave Babler
         var user = x;
         var pass = y;
-        var buttlertText = '';
-        buttlertText = "User is: " + x + " & Password is: " + y;
-        alert(buttlertText);
-    },
-    
+        var debugButtonAlertText = '';
+        debugButtonAlertText = "First Value passed is: " + x + " & Second value passed is: " + y;
+        alert(debugButtonAlertText);
+    }
+
+}
+
+CREDENTIAL = {
+  
     sendToRolePage: function (role) {
         
         switch (role) {
@@ -43,7 +45,7 @@ CREDENTIAL = {
         }else{
             $("#passwordEntryGood").collapse('hide');
             $("#passwordEntryMisMatch").collapse('show');
-            return false;
+            return false
         }
     }
 }

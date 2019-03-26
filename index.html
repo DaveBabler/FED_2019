@@ -156,8 +156,10 @@
                 $("#passVerifyEntry").keyup(function(){
                     passMatch = CREDENTIAL.passMatcher($("#passwordUser").val(), $("#passVerifyEntry").val());
                     if(!passMatch){
+                        //disable the button if passwords don't match
                         $("#formSubmit").addClass("disabled");
                     }else{
+                        //re-enable the button if the passwords do match!
                         $("#formSubmit").removeClass("disabled");
                     }
                 });
@@ -199,20 +201,25 @@
                 processData: false,   //prevent default data parsing behavior
                 dataType: "json", 
                 success:function(phpResponse) {
-                    $("#passwordUser").empty();
-                    let lv_role = phpResponse.ROLEID;
-                    alert(lv_role);
-                    let lv_access = phpResponse.GRANT_ACCESS;
-                    if (lv_access === true) {
-                        //reset the accessAttempts variable
-                        accessAttempts = 0;
-                        CREDENTIAL.sendToRolePage(lv_role);
-                        //send them on their way!
+                    console.log(phpResponse);
+                    if(phpResponse.USERTAKEN === true){
+                        alert("Username taken: you must select a different username to proceed!");
+                    }else{
+                        $("#passwordUser").empty();
+                        let lv_role = phpResponse.ROLEID;
+                        let lv_access = phpResponse.GRANT_ACCESS;
+                        if (lv_access === true) {
+                            //reset the accessAttempts variable
+                            accessAttempts = 0;     
+                            //send them on their way!                    
+                            CREDENTIAL.sendToRolePage(lv_role);      
+                        }else{ 
+                            accessAttempts++;
+                            alert("Sorry, user name or password error, try again attempt #: " + accessAttempts);
+                        }
 
-                    }else 
-                    accessAttempts++;
-
-                }
+                    }
+            }
 
 
             })
