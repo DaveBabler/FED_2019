@@ -34,6 +34,17 @@ CREDENTIAL = {
                 alert("Significant error in CREDENTIAL.sendToRolePage function contact webmaster.")
                 break;
         }      
+    }, 
+    passMatcher: function(input1, input2) {
+        if(input1 === input2) {
+            $("#passwordEntryMisMatch").collapse('hide');
+            $("#passwordEntryGood").collapse('show');
+            return true;
+        }else{
+            $("#passwordEntryGood").collapse('hide');
+            $("#passwordEntryMisMatch").collapse('show');
+            return false;
+        }
     }
 }
 

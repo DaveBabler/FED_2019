@@ -58,6 +58,7 @@
     <script>
         var accessAttempts = 0;
         var credType = '';
+        var passMatch = false;
     </script>
   </head>
   <body>
@@ -101,8 +102,17 @@
                                                     <label for="passVerify">
                                                         Re-Type Password Here.
                                                     </label>
-                                                    <input type="password" class="form-control" name="passVerify" id="passVerify" />
+                                                    <input type="password" class="form-control" name="passVerifyEntry" id="passVerifyEntry" />
+  
+                                                <div class="clearfix hidden-xs hidden-sm"><!-- needed to force a space, only way I knew how Dave --> </div>
+                                                <div class = "alert alert-danger mt-5 collapse" role="alert" id="passwordEntryMisMatch">
+                                                    <b>WARNING:</b> Passwords do not match!
                                                 </div>
+                                                <div class="clearfix hidden-xs hidden-sm"><!-- needed to force a space, only way I knew how Dave --> </div>
+                                                <div class = "alert alert-success collapse" role="alert" id="passwordEntryGood">
+                                                    Passwords match!
+                                                </div>
+                                            </div>
                                             <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="newRecipientCheck">
                                                     <label class="form-check-label" for="newRecipientCheck">New Recipient? Check here.</label>
@@ -143,6 +153,14 @@
             if($(this).is(':checked')){
                 $('#passVerifyDiv').collapse("toggle");
                 credType = "NEW";
+                $("#passVerifyEntry").keyup(function(){
+                    passMatch = CREDENTIAL.passMatcher($("#passwordUser").val(), $("#passVerifyEntry").val());
+                    if(!passMatch){
+                        $("#formSubmit").addClass("disabled");
+                    }else{
+                        $("#formSubmit").removeClass("disabled");
+                    }
+                });
 
             }else{
                 //unchecked
