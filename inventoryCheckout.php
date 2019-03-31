@@ -111,3 +111,16 @@
 </div>
 </div>
 </body>
+<script>
+
+$(document).ready(function(){
+    //grab the user entry 
+    DEBOUNCE.entryTimerStart('userEntry');
+   
+  
+       
+
+    
+}); //end $(document).ready(function)
+
+</script>

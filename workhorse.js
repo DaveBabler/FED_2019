@@ -47,3 +47,64 @@ function wipe_data(alert_id_num){
   return newData;
   }
   //oberon picture for product testing http://i63.tinypic.com/2wex3z5.jpg oberon upc 740522110657
+ 
+ 
+  DEBOUNCE = {
+
+    delayedKeyUp: function(timer){
+      $('#userEntry').on("input", function(timer) {
+        clearTimeout(timer); 
+        var dInput = this.value;
+        timer = setTimeout(DEBOUNCE.valueDelayedEntry(dInput), 3600)
+      
+        //return dInput;
+     });
+    },
+
+    valueDelayedEntry: function(incomingText){
+      //the AJAX call will go here but for now console log will work. 
+      console.log(incomingText);
+    },
+
+
+    debounce: function(func, wait, immediate){
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    }
+    
+  }, 
+ 
+    entryTimerStart: function(passedID){
+      var timer = null;
+      $('#' + passedID).on("input", function(){
+        var jeff = null;
+        clearTimeout(timer);
+        timer = setTimeout(DEBOUNCE.delayedValue.bind(jeff), 1000);
+        return jeff;
+       
+      });
+    }, 
+    delayedValue: function(){
+      var dataToPassEventually = $('#userEntry').val();
+      console.log("this is hitting in the namespace " + dataToPassEventually);
+      return dataToPassEventually;
+    }
+
+
+
+
+  } //end DEBOUNCE namespace 
+
+  
+
+
+  
