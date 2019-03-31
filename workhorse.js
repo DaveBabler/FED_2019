@@ -55,8 +55,7 @@ function wipe_data(alert_id_num){
       $('#userEntry').on("input", function(timer) {
         clearTimeout(timer); 
         var dInput = this.value;
-        timer = setTimeout(DEBOUNCE.valueDelayedEntry(dInput), 3600)
-      
+        timer = setTimeout(DEBOUNCE.valueDelayedEntry(dInput), 3600);
         //return dInput;
      });
     },
