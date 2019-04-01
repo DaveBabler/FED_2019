@@ -51,7 +51,8 @@ function wipe_data(alert_id_num){
  
   DEBOUNCE = {
 
-    delayedKeyUp: function(timer){
+    delayedKeyUp: function(){
+      let timer = null;
       $('#userEntry').on("input", function(timer) {
         clearTimeout(timer); 
         var dInput = this.value;
