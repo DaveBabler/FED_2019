@@ -51,22 +51,6 @@ function wipe_data(alert_id_num){
  
   DEBOUNCE = {
 
-    delayedKeyUp: function(){
-      let timer = null;
-      $('#userEntry').on("input", function(timer) {
-        clearTimeout(timer); 
-        var dInput = this.value;
-        timer = setTimeout(DEBOUNCE.valueDelayedEntry(dInput), 3600);
-        //return dInput;
-     });
-    },
-
-    valueDelayedEntry: function(incomingText){
-      //the AJAX call will go here but for now console log will work. 
-      console.log(incomingText);
-    },
-
-
     debounce: function(func, wait, immediate){
       var timeout;
       return function() {
