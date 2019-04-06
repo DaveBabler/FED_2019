@@ -70,8 +70,10 @@ function wipe_data(alert_id_num){
     entryTimerStart: function(passedID){
       var timer = null;
       $('#' + passedID).on("input", function(){
+       var outputVal = null;
         clearTimeout(timer);
-        timer = setTimeout(DEBOUNCE.delayedAjax(), 1000);
+        timer = setTimeout(DEBOUNCE.promiseTest,  5000);
+        return outputVal;
         
       });
     }, 
@@ -93,8 +95,34 @@ function wipe_data(alert_id_num){
         }
       })
 
+    }, 
+    promiseTest: function () {
+      return new Promise((resolve, reject) => {
+          setTimeout(() => {
+           
+          entry = DEBOUNCE.delayedValue();
+          const error = false;
+          if(!error){
+              resolve(DEBOUNCE.promise2());
+          }else{
+              reject ('Bad stuff happened and it sucks!');
+          }
+          }, 1000);
+      });
+    }, 
+   promise2: function() {
+      return new Promise ((resolve, reject) => {
+          setTimeout(() => {
+          const error = false;
+          if(!error){
+              resolve(console.log("This is the second promise of the value: " + entry));
+          }else{
+              reject ('A second bad thing happened');
+          }
+          }, 2000);
+      });
     }
-
+  
 
 
 

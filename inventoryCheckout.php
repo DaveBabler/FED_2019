@@ -112,11 +112,26 @@
 </div>
 </body>
 <script>
+var entry = null;
+
+
+
+
+
 
 $(document).ready(function(){
     //grab the user entry 
-    DEBOUNCE.entryTimerStart('userEntry');
-   
+
+/*     $('#userEntry').on("input", function(){
+
+        promiseTest().then(console.log("promises happened?"));
+
+    }); */
+
+ DEBOUNCE.entryTimerStart('userEntry');
+
+
+
   
        
 
