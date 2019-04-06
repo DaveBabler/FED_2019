@@ -70,17 +70,29 @@ function wipe_data(alert_id_num){
     entryTimerStart: function(passedID){
       var timer = null;
       $('#' + passedID).on("input", function(){
-        var jeff = null;
         clearTimeout(timer);
-        timer = setTimeout(DEBOUNCE.delayedValue.bind(jeff), 1000);
-        return jeff;
-       
+        timer = setTimeout(DEBOUNCE.delayedAjax(), 1000);
+        
       });
     }, 
     delayedValue: function(){
       var dataToPassEventually = $('#userEntry').val();
       console.log("this is hitting in the namespace " + dataToPassEventually);
       return dataToPassEventually;
+    },
+
+    delayedAjax: function(){
+      var searchData = $('#userEntry').val();
+      $.ajax({
+        type: "POST", 
+        url: 'checkoutDBLogic.php', 
+        data:{'searchData': searchData}, 
+        dataType: "json",
+        success: function(searchResponse){
+          console.log(searchResponse);
+        }
+      })
+
     }
 
 

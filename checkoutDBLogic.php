@@ -3,8 +3,8 @@ session_start();
 include('db.php');
 include('function.php');
 
-//$trimmedSearchValue = $_POST["search"]["value"];
-$trimmedSearchValue = '0768280467';
+$trimmedSearchValue = $_POST["searchData"];
+//$trimmedSearchValue = '0768280467';
 $leadingZero = 0;
 //drop leading zeros
 $trimmedSearchValue = strtolower(ltrim($trimmedSearchValue, $leadingZero));
