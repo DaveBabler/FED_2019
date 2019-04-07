@@ -109,6 +109,7 @@ var entry = null;
 //it's not needed to see typeid on checkout so why clutter!
 var table = $('#cart').DataTable({
     "ordering": false,
+    "bFilter": false, 
     "columnDefs": [
         { "visible": false, "targets": 4 }
     ],
