@@ -49,7 +49,7 @@ function wipe_data(alert_id_num){
   //oberon picture for product testing http://i63.tinypic.com/2wex3z5.jpg oberon upc 740522110657
  
  
-  DEBOUNCE = {
+  THROTTLE = {
 
     debounce: function(func, wait, immediate){
       var timeout;
@@ -72,61 +72,49 @@ function wipe_data(alert_id_num){
       $('#' + passedID).on("input", function(){
        var outputVal = null;
         clearTimeout(timer);
-        timer = setTimeout(DEBOUNCE.promiseTest,  5000);
+        timer = setTimeout(THROTTLE.promisedAjax,  3000);
         return outputVal;
         
       });
     }, 
     delayedValue: function(){
       var dataToPassEventually = $('#userEntry').val();
-      console.log("this is hitting in the namespace " + dataToPassEventually);
-      return dataToPassEventually;
+     return dataToPassEventually;
     },
 
-    delayedAjax: function(){
-      var searchData = $('#userEntry').val();
-      $.ajax({
-        type: "POST", 
-        url: 'checkoutDBLogic.php', 
-        data:{'searchData': searchData}, 
-        dataType: "json",
-        success: function(searchResponse){
-          console.log(searchResponse);
-        }
-      })
-
-    }, 
-    promiseTest: function () {
+    promisedAjax: function () {
       return new Promise((resolve, reject) => {
           setTimeout(() => {
            
-          entry = DEBOUNCE.delayedValue();
+          entry = THROTTLE.delayedValue();
           const error = false;
           if(!error){
-              resolve(DEBOUNCE.promise2());
+              resolve(AJAX_TO_DATABASE.ajaxSearch(entry));
           }else{
               reject ('Bad stuff happened and it sucks!');
           }
           }, 1000);
       });
-    }, 
-   promise2: function() {
-      return new Promise ((resolve, reject) => {
-          setTimeout(() => {
-          const error = false;
-          if(!error){
-              resolve(console.log("This is the second promise of the value: " + entry));
-          }else{
-              reject ('A second bad thing happened');
-          }
-          }, 2000);
-      });
     }
-  
+
+} //end THROTTLE namespace 
 
 
+AJAX_TO_DATABASE = {
 
-  } //end DEBOUNCE namespace 
+  ajaxSearch: function(searchData){
+    $.ajax({
+      type: "POST", 
+      url: 'checkoutDBLogic.php', 
+      data:{'searchData': searchData}, 
+      dataType: "json",
+      success: function(searchResponse){
+        console.log(searchResponse);
+      }
+    })
+  }
+
+} //end AJAX_TO_DATABASE namespace
 
   
 
