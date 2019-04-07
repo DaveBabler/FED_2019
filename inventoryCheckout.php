@@ -69,9 +69,22 @@
   <div class="container-fluid">
   <div class="container box">
     <div class ="row">
-        <div class="col-md-12">
+        <div class="col-sm-12 col-md-12">
         <h1 align="center">Checkout</h1>
         </div>
+        <div class="row">
+            <div class ="col-sm-12 col-md-12">
+                <div hidden class="alert alert-danger alert-dismissible" id = "checkout_zero_inventory_alert">
+                <!--  regarding * data-dismiss="alert" * DO NOT USE THIS that completely destroys the div  -->
+                <a href="#" id="alert-close-01" class="close"  aria-label="close">&times;</a>
+                <strong>Zero Quantity in Database</strong> 
+                <!-- fill in message here -->
+                <p id="checkout_zero_inventory"></p>
+                </div>
+            </div>
+        </div>
+
+
         <div class="col-md-7">
             <input type="text" class ="form-control" name="userEntry" id="userEntry" aria-describedby="userEntry" placeholder="Scan or enter UPC here">
         </div>
@@ -129,24 +142,16 @@ var table = $('#cart').DataTable({
 
 $(document).ready(function(){
     //grab the user entry 
-
-/*     $('#userEntry').on("input", function(){
-
-        promiseTest().then(console.log("promises happened?"));
-
-    }); */
-
-/*     table.row.add({
-        "Image": 
-        "UPC": '076828046704', 
-        "Description" : 'Wet Wipes',
-        "Delete": '<button type="button" class="btn btn-danger">Delete from cart</button>', 
-        "TypeID": "4"
-    }).draw();
- */
-
- THROTTLE.entryTimerStart('userEntry');
-
+    THROTTLE.entryTimerStart('userEntry');
+    //close any bootstrap warnings
+    $('.alert .close').on('click', function(e){
+        $(this).parent().hide();
+    });
+    //remove row
+    $('.btn btn-danger').on('click', function(e){
+        e.preventDefault();
+        console.log("clicked");
+    });
 
 
   

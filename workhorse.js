@@ -110,7 +110,11 @@ AJAX_TO_DATABASE = {
       dataType: "json",
       success: function(searchResponse){
         console.log(searchResponse);
-        AJAX_TO_DATATABLES.createRow(searchResponse);
+        if(searchResponse.cartQuantity < 1){
+          AJAX_TO_DATATABLES.zeroInventory(searchResponse);
+        }else{
+          AJAX_TO_DATATABLES.createRow(searchResponse);
+        }
       }
     })
   }
@@ -136,7 +140,7 @@ AJAX_TO_DATATABLES = {
   }, 
 
 
-  createRow: function (dbResponse){
+  createRow: function(dbResponse){
     let imageProper = AJAX_TO_DATATABLES.createImg(dbResponse.cartImage);
     let deleteProper = AJAX_TO_DATATABLES.createButton(dbResponse.cartUPC);
     table.row.add({
@@ -146,7 +150,17 @@ AJAX_TO_DATATABLES = {
       "Delete": deleteProper,
       "TypeID": dbResponse.cartType_ID
     }).draw();
+  }, 
+
+  zeroInventory: function(dbResponse){
+    //no need for image proper, the string builder will handle that for us. 
+    //no need for delete button.
+    let bootstrap_warning_string = zero_inventory_checkout_builder(dbResponse.cartUPC, dbResponse.cartDescription, dbResponse.cartImage);
+    $("#checkout_zero_inventory_alert").show();
+    $("#checkout_zero_inventory").html(bootstrap_warning_string);    
   }
+
+
 }//end AJAX_TO_DATATABLES namespace
 
   

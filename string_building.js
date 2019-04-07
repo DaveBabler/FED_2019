@@ -41,7 +41,7 @@ var str_upd_ins_obj = {
   
   
 function update_confirmation_builder(upc_var, descriptor_var, quant_var, type_var, image_var) {
-  var string_out;
+  let string_out;
   if(descriptor_var){
     string_out = '<div class="table-responsive">';
     string_out += '<table class="table-condensed">';
@@ -81,7 +81,7 @@ function update_confirmation_builder(upc_var, descriptor_var, quant_var, type_va
 }
 
 function insert_confirmation_builder(upc_var, descriptor_var, quant_var, type_var, image_var) {
-  var string_out;
+  let string_out;
   if(descriptor_var){
     string_out = '<div class="table-responsive">';
     string_out += '<table class="table-condensed">';
@@ -117,7 +117,7 @@ function insert_confirmation_builder(upc_var, descriptor_var, quant_var, type_va
 }
 
 function delete_confirmation_builder(upc_var, descriptor_var, quant_var, image_var) {
-  var string_out;
+  let string_out;
   if(descriptor_var){
     string_out = '<div class="table-responsive">';
     string_out += '<table class="table-condensed">';
@@ -148,3 +148,33 @@ function delete_confirmation_builder(upc_var, descriptor_var, quant_var, image_v
   return string_out;
 }
 
+function zero_inventory_checkout_builder(upc_var, descriptor_var, image_var){
+  let string_out;
+  if(descriptor_var){
+    string_out = '<div class="table-responsive">';
+    string_out += '<table class="table-condensed">';
+    string_out += '<tbody>';
+    string_out += '<tr>';
+    string_out += '<td>UPC: </td>';
+    string_out += '<td>'+ upc_var + '<i> is listed with zero quantity.</i></td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Description: </td>';
+    string_out += '<td>'+ descriptor_var + '</td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Looks like: </td>';
+    string_out += '<td><div><img src="' + image_var + '" class="img-thumbnail" style="display: block; margin-left: none; margin-right: auto; width: 75px; height: 75px; object-fit: scale-down;"></div></td>';
+    string_out += '</tr>';
+    string_out += '<tr>';
+    string_out += '<td>Action to take: </td>';
+    string_out += '<td>Please <b>write down this UPC and description then give it to a FED administrator</b>;<br>keep the product, and close this dialogue to continue with transaction.</td>';
+    string_out += '</tr>';
+    string_out += '</tbody>';
+    string_out += '</table>';
+    string_out += '</div>';
+  }else{
+      console.log("a significant error has occurred in module zero_inventory_checkout_builder");
+    }
+  return string_out;
+}
