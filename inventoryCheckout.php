@@ -86,21 +86,14 @@
     </div>
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table table-bordered table-hover">
+        <table id="cart" class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>
-							Image
-						</th>
-						<th>
-							UPC
-						</th>
-						<th>
-							Description
-						</th>
-                        <th>
-                            Delete
-						</th>
+						<th max-width="5%">Image</th>
+						<th max-width="5%">UPC</th>
+						<th>Description</th>
+                        <th max-width="5%">Delete</th>
+                        <th>TypeID</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -113,7 +106,21 @@
 </body>
 <script>
 var entry = null;
+//it's not needed to see typeid on checkout so why clutter!
+var table = $('#cart').DataTable({
+    "ordering": false,
+    "columnDefs": [
+        { "visible": false, "targets": 4 }
+    ],
+    columns:[
+        {"data": 'Image'}, 
+        {"data": 'UPC'}, 
+        {"data": 'Description'},
+        {"data": 'Delete'},
+        {"data": 'TypeID'}
+    ]
 
+});
 
 
 
@@ -127,6 +134,15 @@ $(document).ready(function(){
         promiseTest().then(console.log("promises happened?"));
 
     }); */
+
+/*     table.row.add({
+        "Image": 
+        "UPC": '076828046704', 
+        "Description" : 'Wet Wipes',
+        "Delete": '<button type="button" class="btn btn-danger">Delete from cart</button>', 
+        "TypeID": "4"
+    }).draw();
+ */
 
  THROTTLE.entryTimerStart('userEntry');
 

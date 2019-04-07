@@ -110,11 +110,44 @@ AJAX_TO_DATABASE = {
       dataType: "json",
       success: function(searchResponse){
         console.log(searchResponse);
+        AJAX_TO_DATATABLES.createRow(searchResponse);
       }
     })
   }
 
 } //end AJAX_TO_DATABASE namespace
+
+
+AJAX_TO_DATATABLES = {
+  createImg: function(dbImg){
+    let imgOut ='';
+    let prefixChunk = '<img src="';
+    let middleChunk = dbImg;
+    let suffixChunk = '" class="img-thumbnail" style ="display: block; margin-left: auto; margin-right: auto; width: 100px; height: 100px; object-fit: scale-down;" />';
+    return imgOut = prefixChunk + middleChunk + suffixChunk;
+  },
+
+  createButton: function(dbUPC){
+    let buttonOut = '';
+    let prefixChunk = '<button type="button" class="btn btn-danger" id="';
+    let middleChunk = dbUPC;
+    let suffixChunk = '">Delete from cart</button>';
+    return buttonOut = prefixChunk+middleChunk+suffixChunk;
+  }, 
+
+
+  createRow: function (dbResponse){
+    let imageProper = AJAX_TO_DATATABLES.createImg(dbResponse.cartImage);
+    let deleteProper = AJAX_TO_DATATABLES.createButton(dbResponse.cartUPC);
+    table.row.add({
+      "Image": imageProper,
+      "UPC": dbResponse.cartUPC, 
+      "Description" : dbResponse.cartDescription,
+      "Delete": deleteProper,
+      "TypeID": dbResponse.cartType_ID
+    }).draw();
+  }
+}//end AJAX_TO_DATATABLES namespace
 
   
 
