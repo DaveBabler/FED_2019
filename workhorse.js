@@ -133,7 +133,7 @@ AJAX_TO_DATATABLES = {
 
   createButton: function(dbUPC){
     let buttonOut = '';
-    let prefixChunk = '<button type="button" class="btn btn-danger" id="';
+    let prefixChunk = '<button type="button" class="btn btn-danger delete" id="';
     let middleChunk = dbUPC;
     let suffixChunk = '">Delete from cart</button>';
     return buttonOut = prefixChunk+middleChunk+suffixChunk;

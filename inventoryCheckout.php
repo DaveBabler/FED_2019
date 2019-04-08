@@ -148,9 +148,12 @@ $(document).ready(function(){
         $(this).parent().hide();
     });
     //remove row
-    $('.btn btn-danger').on('click', function(e){
+    $(document).on('click', '.delete', function(e) {
         e.preventDefault();
-        console.log("clicked");
+        table 
+            .row($(this).parents('tr'))
+            .remove()
+            .draw();
     });
 
 
