@@ -156,6 +156,12 @@ $(document).ready(function(){
             .draw();
     });
 
+    $(document).on('click', '#buttonCheckout', function(e){
+        e.preventDefault();
+        let data = table.rows().data().toArray();
+        console.log(JSON.stringify(data));
+    })
+
 
   
        
