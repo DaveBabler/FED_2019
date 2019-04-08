@@ -160,7 +160,9 @@ $(document).ready(function(){
         e.preventDefault();
         let data = table.rows().data().toArray();
         console.log(JSON.stringify(data));
-    })
+        console.log("---------- OFF TO AJAX----------------");
+        AJAX_TO_DATABASE.ajaxCheckout(data);
+    });
 
 
   

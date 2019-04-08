@@ -117,6 +117,18 @@ AJAX_TO_DATABASE = {
         }
       }
     })
+  }, 
+
+  ajaxCheckout: function(cartData){
+    $.ajax({
+      type: "POST", 
+      url: 'checkoutUpdateTemp.php', 
+      data:{'pushData': cartData}, 
+      dataType: "json",
+      success: function(cartResponse){
+        console.log(cartResponse);
+      }
+    })
   }
 
 } //end AJAX_TO_DATABASE namespace
