@@ -103,10 +103,12 @@ function wipe_data(alert_id_num){
 AJAX_TO_DATABASE = {
 
   ajaxSearch: function(searchData){
+    let queryType = new Array("SEARCH");//I assume passing it as an array is what will let AJAX take it.
     $.ajax({
       type: "POST", 
       url: 'checkoutDBLogic.php', 
-      data:{'searchData': searchData}, 
+      data:{'searchData': searchData, 
+            'queryType': queryType}, 
       dataType: "json",
       success: function(searchResponse){
         console.log(searchResponse);
@@ -120,10 +122,12 @@ AJAX_TO_DATABASE = {
   }, 
 
   ajaxCheckout: function(cartData){
+    let queryType = new Array("CHECKOUT"); //my assumptions in AJAX_TO_DATABASE.ajaxSearch were correct
     $.ajax({
       type: "POST", 
       url: 'checkoutUpdateTemp.php', 
-      data:{'pushData': cartData}, 
+      data:{'cartData': cartData, 
+            'queryType': queryType}, 
       dataType: "json",
       success: function(cartResponse){
         console.log(cartResponse);

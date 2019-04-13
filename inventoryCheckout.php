@@ -123,6 +123,7 @@ var entry = null;
 var table = $('#cart').DataTable({
     "ordering": false,
     "bFilter": false, 
+
     "columnDefs": [
         { "visible": false, "targets": 4 }
     ],
@@ -131,8 +132,14 @@ var table = $('#cart').DataTable({
         {"data": 'UPC'}, 
         {"data": 'Description'},
         {"data": 'Delete'},
-        {"data": 'TypeID'}
-    ]
+        {"data": 'TypeID'}, 
+    ], 
+    "ajax": {
+    "url": "checkoutUpdateTemp.php",
+    "data": {
+        "user_id": 451
+    }
+  }
 
 });
 
