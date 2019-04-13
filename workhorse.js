@@ -103,22 +103,28 @@ function wipe_data(alert_id_num){
 AJAX_TO_DATABASE = {
 
   ajaxSearch: function(searchData){
-    let queryType = new Array("SEARCH");//I assume passing it as an array is what will let AJAX take it.
-    $.ajax({
-      type: "POST", 
-      url: 'checkoutDBLogic.php', 
-      data:{'searchData': searchData, 
-            'queryType': queryType}, 
-      dataType: "json",
-      success: function(searchResponse){
-        console.log(searchResponse);
-        if(searchResponse.cartQuantity < 1){
-          AJAX_TO_DATATABLES.zeroInventory(searchResponse);
-        }else{
-          AJAX_TO_DATATABLES.createRow(searchResponse);
+
+    //debugging
+    if(searchData === '' || searchData == '' || searchData == null || searchData === undefined) {
+        console.log("No data currently selected and/or empty value set");
+    }else{
+      let queryType = new Array("SEARCH");//I assume passing it as an array is what will let AJAX take it.
+      $.ajax({
+        type: "POST", 
+        url: 'checkoutDBLogic.php', 
+        data:{'searchData': searchData, 
+              'queryType': queryType}, 
+        dataType: "json",
+        success: function(searchResponse){
+          console.log(searchResponse);
+          if(searchResponse.cartQuantity < 1){
+            AJAX_TO_DATATABLES.zeroInventory(searchResponse);
+          }else{
+            AJAX_TO_DATATABLES.createRow(searchResponse);
+          }
         }
-      }
-    })
+      })
+    }
   }, 
 
   ajaxCheckout: function(cartData){
