@@ -50,25 +50,27 @@ if($queryType == 'SEARCH'){
     $cartItemCount = count($_POST['cartData']);
     $successArray = array();
     for($i=0; $i<$cartItemCount; $i++){
-        $cartUPC = array_push_assoc($cartUPC, $_POST['cartData'][$i]['UPC'], $qty);
+        array_push($cartUPC, $_POST['cartData'][$i]['UPC']);
     }
-    $sqlUpdate = " UPDATE INVENTORY
-                    SET QUANTITY = (QUANTITY - ?)
-                    WHERE UPC = ? ";
+    for($i=0; $i<$cartItemCount; $i++){
+        $sqlUpdate = " UPDATE INVENTORY
+        SET QUANTITY = (QUANTITY - :QTY)
+        WHERE UPC = :UPC ";
+
         $updateStmt = $connection->prepare($sqlUpdate);
         if(false==$updateStmt){
             die('Update failed on var \'updateStmt\' contact DBA with the following code: ' . htmlspecialchars($updateStmt));
         }
-        foreach($cartUPC as $key => $value){
-            $updateStmt->bindValue($value, $key);
-            $updateStmt->execute();
-            $successMessageUPC = $key." has been updated";
-            array_push($successArray, $successMessageUPC);
+        $updateStmt->bindParam(':QTY', $qty, PDO::PARAM_INT);
+        $updateStmt->bindParam(':UPC', $cartUPC[$i], PDO::PARAM_INT);
+        $updateStmt->execute();
+        if(!$updateStmt->rowCount()){
+            $error = "Update failed on execute " . htmlspecialchars($updateStmt) . "<br>";
+            echo json_encode($error);
         }
-
-        
-  
-  
+        $successMessageUPC = $cartUPC[$i]." has been updated";
+        array_push($successArray, $successMessageUPC);
+    }
 
     echo json_encode($successArray);
 
