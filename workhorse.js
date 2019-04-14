@@ -103,9 +103,8 @@ function wipe_data(alert_id_num){
 AJAX_TO_DATABASE = {
 
   ajaxSearch: function(searchData){
-
-    //debugging
     if(searchData === '' || searchData == '' || searchData == null || searchData === undefined) {
+      //prevent an emptied field from selecting random data.
         console.log("No data currently selected and/or empty value set");
     }else{
       let queryType = new Array("SEARCH");//I assume passing it as an array is what will let AJAX take it.
@@ -128,15 +127,18 @@ AJAX_TO_DATABASE = {
   }, 
 
   ajaxCheckout: function(cartData){
+    console.log("inside ajaxCheckout");
     let queryType = new Array("CHECKOUT"); //my assumptions in AJAX_TO_DATABASE.ajaxSearch were correct
     $.ajax({
       type: "POST", 
-      url: 'checkoutUpdateTemp.php', 
+      url: 'checkoutDBLogic.php', 
       data:{'cartData': cartData, 
             'queryType': queryType}, 
-      dataType: "json",
+      dataType: "text",
       success: function(cartResponse){
+        console.log("cartResponse should be exactly below this line");
         console.log(cartResponse);
+        console.log("the only thing above this should be a response from AJAX");
       }
     })
   }
