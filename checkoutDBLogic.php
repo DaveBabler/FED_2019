@@ -1,9 +1,11 @@
 <?php
 session_start();
 include('db.php');
-include('function.php');
+include('.pfunctionhp');
 $queryType = $_POST['queryType'][0];
 unset($cartItem);
+$successSwitch = '';
+    /*The successSwitch will determine if we need to look for a caught exception on cart update*/
 
 
 if($queryType == 'SEARCH'){
@@ -44,35 +46,43 @@ if($queryType == 'SEARCH'){
 
         echo json_encode($cartItem);
 }elseif ($queryType === "CHECKOUT") {
-    $qty = 1; //quantity will always be 1 for now, but leaving this as a var incase stakeholders want to change functionality
-    $cartUPC = array();
-    
-    $cartItemCount = count($_POST['cartData']);
-    $successArray = array();
-    for($i=0; $i<$cartItemCount; $i++){
-        array_push($cartUPC, $_POST['cartData'][$i]['UPC']);
-    }
-    for($i=0; $i<$cartItemCount; $i++){
-        $sqlUpdate = " UPDATE INVENTORY
-        SET QUANTITY = (QUANTITY - :QTY)
-        WHERE UPC = :UPC ";
 
-        $updateStmt = $connection->prepare($sqlUpdate);
-        if(false==$updateStmt){
-            die('Update failed on var \'updateStmt\' contact DBA with the following code: ' . htmlspecialchars($updateStmt));
+   try{  
+        //should tell PDO to throw exceptions won't need a "throw" command (I hope)~Dave Babler     
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+        $qty = 1; //quantity will always be 1 for now, but leaving this as a var incase stakeholders want to change functionality
+        $cartUPC = array();
+        
+        $cartItemCount = count($_POST['cartData']);
+        $successArray = array();
+        for($i=0; $i<$cartItemCount; $i++){
+            array_push($cartUPC, $_POST['cartData'][$i]['UPC']);
         }
-        $updateStmt->bindParam(':QTY', $qty, PDO::PARAM_INT);
-        $updateStmt->bindParam(':UPC', $cartUPC[$i], PDO::PARAM_INT);
-        $updateStmt->execute();
-        if(!$updateStmt->rowCount()){
-            $error = "Update failed on execute " . htmlspecialchars($updateStmt) . "<br>";
-            echo json_encode($error);
-        }
-        $successMessageUPC = $cartUPC[$i]." has been updated";
-        array_push($successArray, $successMessageUPC);
-    }
+        for($i=0; $i<$cartItemCount; $i++){
+            $sqlUpdate = " UPDATE INVENTORY
+            SET QUANTITY = (QUANTITY - :QTY)
+            WHERE UPC = :UPC ";
 
-    echo json_encode($successArray);
+            $updateStmt = $connection->prepare($sqlUpdate);
+            if(false==$updateStmt){
+                die('Update failed on var \'updateStmt\' contact DBA with the following code: ' . htmlspecialchars($updateStmt));
+            }
+            $updateStmt->bindParam(':QTY', $qty, PDO::PARAM_INT);
+            $updateStmt->bindParam(':UPC', $cartUPC[$i], PDO::PARAM_INT);
+            $updateStmt->execute();
+            if(!$updateStmt->rowCount()){
+                $error = "Update failed on execute " . htmlspecialchars($updateStmt) . "<br>";
+                echo json_encode($error);
+            }
+            $successMessageUPC = $cartUPC[$i]." has been updated";
+            array_push($successArray, $successMessageUPC);
+        }
+        $connection->commit();
+        echo json_encode($successArray);
+    }catch(Exception $e){
+        $pdo->rollBack();
+        
+    }
 
 }
 
