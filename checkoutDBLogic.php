@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('db.php');
-include('.pfunctionhp');
+include('function.php');
 $queryType = $_POST['queryType'][0];
 unset($cartItem);
 $successSwitch = '';
@@ -50,6 +50,7 @@ if($queryType == 'SEARCH'){
    try{  
         //should tell PDO to throw exceptions won't need a "throw" command (I hope)~Dave Babler     
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+        $connection->beginTransaction();
         $qty = 1; //quantity will always be 1 for now, but leaving this as a var incase stakeholders want to change functionality
         $cartUPC = array();
         
@@ -65,14 +66,13 @@ if($queryType == 'SEARCH'){
 
             $updateStmt = $connection->prepare($sqlUpdate);
             if(false==$updateStmt){
-                die('Update failed on var \'updateStmt\' contact DBA with the following code: ' . htmlspecialchars($updateStmt));
+              throw new SQLException(null, 0, null, "prepare", $updateStmt, "updateStmt");
             }
             $updateStmt->bindParam(':QTY', $qty, PDO::PARAM_INT);
             $updateStmt->bindParam(':UPC', $cartUPC[$i], PDO::PARAM_INT);
             $updateStmt->execute();
             if(!$updateStmt->rowCount()){
-                $error = "Update failed on execute " . htmlspecialchars($updateStmt) . "<br>";
-                echo json_encode($error);
+                throw new SQLException(null, 0, null, "execute", $updateStmt, "updateStmt");
             }
             $successMessageUPC = $cartUPC[$i]." has been updated";
             array_push($successArray, $successMessageUPC);
@@ -81,6 +81,15 @@ if($queryType == 'SEARCH'){
         echo json_encode($successArray);
     }catch(Exception $e){
         $pdo->rollBack();
+        echo json_encode($e);
+    }catch(SQLException $updateException) {
+        $pdo->rollback();
+        $updateExceptionOut = $updateException->thrownSQL();
+        echo json_encode($updateExceptionOut);
+    }catch(SQLException $executeException){
+        $pdo->rollback();
+        $executeExceptionOut = $executeException->thrownSQL();
+        echo json_encode($executeExceptionOut);
         
     }
 
