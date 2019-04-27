@@ -98,14 +98,15 @@
         <br>
     </div>
 	<div class="row">
+    <div class="table-responsive">
 		<div class="col-md-12">
-        <table id="cart" class="table table-striped table-hover">
+            <table id="cart" class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th max-width="5%">Image</th>
-						<th max-width="5%">UPC</th>
-						<th>Description</th>
-                        <th max-width="5%">Delete</th>
+						<th class="col-xs-1">Image</th>
+						<th class="col-xs-1">UPC</th>
+						<th class="col-xs-6">Description</th>
+                        <th class="col-xs-3">Delete</th>
                         <th>TypeID</th>
 					</tr>
 				</thead>
@@ -113,6 +114,7 @@
 				</tbody>
 			</table>
 		</div>
+        
     </div>
 </div>
 </div>
@@ -121,6 +123,7 @@
 var entry = null;
 //it's not needed to see typeid on checkout so why clutter!
 var table = $('#cart').DataTable({
+    //responsive: true,
     "ordering": false,
     "bFilter": false, 
 
