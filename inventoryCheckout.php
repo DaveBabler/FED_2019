@@ -114,7 +114,6 @@
 				</tbody>
 			</table>
 		</div>
-        
     </div>
 </div>
 </div>
@@ -123,7 +122,6 @@
 var entry = null;
 //it's not needed to see typeid on checkout so why clutter!
 var table = $('#cart').DataTable({
-    //responsive: true,
     "ordering": false,
     "bFilter": false, 
 

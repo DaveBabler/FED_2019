@@ -4,8 +4,6 @@ include('db.php');
 include('function.php');
 $queryType = $_POST['queryType'][0];
 unset($cartItem);
-$successSwitch = '';
-    /*The successSwitch will determine if we need to look for a caught exception on cart update*/
 
 
 if($queryType == 'SEARCH'){

@@ -23,46 +23,7 @@
     <!-- end our custom scripts -->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <style>
-      body {
-          margin:0;
-          padding:0;
-          background-color:#f1f1f1;
-      }
-      .box {
-          width:90%;
-          padding:20px;
-          background-color:#fff;
-          border:1px solid #ccc;
-          border-radius:5px;
-          margin-top:25px;
-      }
-      .horizontal-scroll {
-          /*overflow: hidden;
-          overflow-x: clear;*/
-          clear:  both;
-          width: 100%;
-      }
-      .table-striped {
-          min-width: rem-calc(640);
-      }
-      .add_button_holder {
-          max-width: 100px;
-          float: right;
-      }
-      .col-sm-6 {
-          max-width: 200px;
-      }
-      .add_button_holder, .dataTable_filter {
-          display: inline-block;
-      }
-      .add_button_holder{
-          height: 30px;
-      }
-      div.dataTables_wrapper div.dataTables_filter input {
-          width: 400px;
-      }
-    </style>
+    <link rel="stylesheet" href="fed.css">
   </head>
   <body>
     <div class="container box">
@@ -139,7 +100,7 @@
           <input type="text" name="description" id="description" class="form-control" autocomplete="off" />
           <span id="valid_description"></span>
           <br />
-          <label>Food Type</label>
+          <label>Food Type</label> <span id="foodTypeWarning" style="color:red;"></span>
           <select name = "foodtype" id="foodtype" class ="form-control">
             <?php
                         foreach($connection->query($query) as $row){
@@ -275,7 +236,6 @@ $(document).ready(function(){
       load_data();
     }
   });
-
   $(document).on('submit', '#user_form', function(event) {
     event.preventDefault();
     var description = $('#description').val();
@@ -284,6 +244,8 @@ $(document).ready(function(){
     $('#user_id').val(user_id);
     var food_type=$('#foodtype').val();
     var food_type_string = ""; //use this to grab the textual food type.
+    
+    $('#foodTypeWarning').text(""); 
     if(user_id !='' && description != '' && quantity != '' && food_type != 0) {
       $.ajax({
         url:"insert.php",
@@ -293,7 +255,6 @@ $(document).ready(function(){
         processData:false,
         success:function(data) {
           //begin secondary AJAX call
-
           //show bootstrap success box and do the prepwork to get the data in it
           $("#insert_succeed_box").show();
           //grab the proper name of the food type
@@ -301,10 +262,6 @@ $(document).ready(function(){
           console.log("new logic");
           console.log(properType);
           console.log("new logic");
-
-
-
-
           //see notes on string_building.js about this object 
           var str_upd_ins_obj = {
           outer_upc_var: $('#upc').val(),
@@ -330,13 +287,15 @@ $(document).ready(function(){
           }
           //bounce back to the top, close the boot strap box, purge the data from it.
           bounce_up_init_vars();
-
         }
       });
     }
+    else if (food_type == 0){
+       $('#foodTypeWarning').text("Please select the food type"); 
+    }
     else
     {
-      alert("Please fill in the UPC, Description, Quantity and select the food type");
+      alert("Please fill in the UPC, Description, and Quantity");
     }
   });
 	
@@ -460,7 +419,6 @@ $(document).ready(function(){
         $('#image_location').val(data.item_image);
         $('#itemimage').attr('src',data.item_image);
         $('#foodtype').val(data.food_id);
-
         dataTable().ajax.reload();
           var category = $('#category').val();
           if(category !=''){
@@ -523,7 +481,6 @@ $(document).ready(function(){
               load_data();
             }
           }
-
       });
       $("#delete_succeed_box").show();
       //show ^ then v  purge and close the warning box on click
@@ -537,9 +494,5 @@ $(document).ready(function(){
     $(this).parent().hide();
     //wipe_data("01");
 });
-
 });
-
-
-
 </script>
