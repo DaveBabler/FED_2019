@@ -30,7 +30,7 @@ CREDENTIAL = {
                 window.location.href = "http://dbabler.yaacotu.com/FED_2019/inventoryMain.php";
                 break;
             case "3":
-                window.location.href = "http://dbabler.yaacotu.com/FED_2019/inventoryMain.php";
+                window.location.href = "http://dbabler.yaacotu.com/FED_2019/inventoryCheckout.php";
                 break;
             default:
                 alert("Significant error in CREDENTIAL.sendToRolePage function contact webmaster.")
