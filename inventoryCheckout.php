@@ -156,19 +156,16 @@ var table = $('#cart').DataTable({
 
 });
 
-var lv_savedCart;
+var savedCart;
 
 
 
 $(document).ready(function(){
 
     if(sessionStorage.getItem("savedCart") != null){
-        alert("OMG SOMETHING IS THERE!!!");
-   /*      lv_savedCart = $.map(sessionStorage.getItem("savedCart"), function(value, index){
-            return [value];
-        }); */
-        lv_savedCart = sessionStorage.getItem("savedCart");
-        console.log(JSON.parse(lv_savedCart));
+        savedCart = SESSION_DATATABLES.retrieveSessionTable();
+        console.log(JSON.parse(savedCart));
+        SESSION_DATATABLES.rebuildTable(savedCart);
     // Redraw the DataTable
     }
 
@@ -187,13 +184,7 @@ $(document).ready(function(){
             .row($(this).parents('tr'))
             .remove()
             .draw();
-            //.state.save();
-        console.log(table.state());
-        console.log($("#cart").DataTable().rows().data().toArray());
-        sessCart = ($("#cart").DataTable().rows().data().toArray());
-        sessionStorage.setItem("savedCart", JSON.stringify(sessCart));
-
-        //this is one way to get the dataTable out but lets see if we can do better;
+           SESSION_DATATABLES.saveTableInSession();
     });
 
     $(document).on('click', '#buttonCheckout', function(e){

@@ -174,6 +174,7 @@ AJAX_TO_DATATABLES = {
       "Delete": deleteProper,
       "TypeID": dbResponse.cartType_ID
     }).draw();
+    SESSION_DATATABLES.saveTableInSession();
   }, 
 
   zeroInventory: function(dbResponse){
@@ -196,13 +197,18 @@ SESSION_DATATABLES = {
     table.columns.adjust().draw();
   }, 
   saveTableInSession: function(){
-    let sessionCart = '';
     //again I prefer to have all JSON parsing done in function so interfaces don't have to worry about it
     sessionCart = JSON.stringify($("#cart").DataTable().rows().data().toArray());
     sessionStorage.setItem("savedCart", sessionCart);
+
+  }, 
+  retrieveSessionTable: function(){
+    let sessionCart = '';
     sessionCart = sessionStorage.getItem("savedCart");
     return sessionCart;
+    //warning it returns JSON data, and thus will need to be dealt with accordingly
   }
+
 }
 
 
