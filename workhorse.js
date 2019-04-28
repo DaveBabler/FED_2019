@@ -207,9 +207,36 @@ SESSION_DATATABLES = {
     sessionCart = sessionStorage.getItem("savedCart");
     return sessionCart;
     //warning it returns JSON data, and thus will need to be dealt with accordingly
-  }
+  }, 
 
-}
+  destroyTable: function(){
+    //everything else is abstracted, so I'm abstracting this.-- Dave Babler
+    //future iterations may require more work to destroy the table so leaving it here is a good idea -- Dave Babler
+    table.destroy();
+    table.draw();
+  }
+} //end SESSION_DATATABLES namespace
+
+SESSION_CLOSING = {
+  killPHPSession: function(){
+    $.ajax({
+      url: "session_kill.php", 
+      type: 'GET', 
+      dataType: 'text',
+      async: false, //this CANNOT be asynchronous or the series of events will fail. -- Dave Babler
+      success: function(result){
+        console.log(result);
+      }
+    });
+  }, 
+  killHTMLSession: function(){
+    sessionStorage.clear();
+  }, 
+  sendToLogin: function(){
+    //we don't want people using the back button here.
+    window.location.replace("index.html");
+  }
+}//end SESSION_CLOSING namespace 
 
 
   

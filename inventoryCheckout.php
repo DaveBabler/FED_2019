@@ -193,6 +193,10 @@ $(document).ready(function(){
         console.log(JSON.stringify(data));
         console.log("---------- OFF TO AJAX----------------");
         AJAX_TO_DATABASE.ajaxCheckout(data);
+        SESSION_DATATABLES.destroyTable();
+        SESSION_CLOSING.killHTMLSession();
+        SESSION_CLOSING.killPHPSession();
+        SESSION_CLOSING.sendToLogin();
 
     });
 
