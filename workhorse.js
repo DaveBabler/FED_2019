@@ -72,7 +72,7 @@ function wipe_data(alert_id_num){
       $('#' + passedID).on("input", function(){
        var outputVal = null;
         clearTimeout(timer);
-        timer = setTimeout(THROTTLE.promisedAjax,  3000);
+        timer = setTimeout(THROTTLE.promisedAjax,  1000);
         return outputVal;
         
       });
