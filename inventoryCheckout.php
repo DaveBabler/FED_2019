@@ -114,6 +114,7 @@
 				</tbody>
 			</table>
 		</div>
+        
     </div>
 </div>
 </div>
@@ -123,7 +124,18 @@ var entry = null;
 //it's not needed to see typeid on checkout so why clutter!
 var table = $('#cart').DataTable({
     "ordering": false,
-    "bFilter": false, 
+    "bFilter": false,
+    "stateSave": true,
+    "stateDuration": -1,
+    "bstateSave": true,
+    "retrieve": true,
+    "stateSaveParams": function (settings, data) {
+    data.search.search = "";
+  }, 
+  stateSaveCallback: function(settings,data) {
+      localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+    },
+
 
     "columnDefs": [
         { "visible": false, "targets": 4 }
@@ -144,13 +156,26 @@ var table = $('#cart').DataTable({
 
 });
 
-
+var lv_savedCart;
 
 
 
 $(document).ready(function(){
+
+    if(sessionStorage.getItem("savedCart") != null){
+        alert("OMG SOMETHING IS THERE!!!");
+   /*      lv_savedCart = $.map(sessionStorage.getItem("savedCart"), function(value, index){
+            return [value];
+        }); */
+        lv_savedCart = sessionStorage.getItem("savedCart");
+        console.log(JSON.parse(lv_savedCart));
+    // Redraw the DataTable
+    }
+
+
     //grab the user entry 
     THROTTLE.entryTimerStart('userEntry');
+
     //close any bootstrap warnings
     $('.alert .close').on('click', function(e){
         $(this).parent().hide();
@@ -162,6 +187,13 @@ $(document).ready(function(){
             .row($(this).parents('tr'))
             .remove()
             .draw();
+            //.state.save();
+        console.log(table.state());
+        console.log($("#cart").DataTable().rows().data().toArray());
+        sessCart = ($("#cart").DataTable().rows().data().toArray());
+        sessionStorage.setItem("savedCart", JSON.stringify(sessCart));
+
+        //this is one way to get the dataTable out but lets see if we can do better;
     });
 
     $(document).on('click', '#buttonCheckout', function(e){
@@ -170,6 +202,7 @@ $(document).ready(function(){
         console.log(JSON.stringify(data));
         console.log("---------- OFF TO AJAX----------------");
         AJAX_TO_DATABASE.ajaxCheckout(data);
+
     });
 
 

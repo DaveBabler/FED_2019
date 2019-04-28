@@ -187,7 +187,23 @@ AJAX_TO_DATATABLES = {
 
 }//end AJAX_TO_DATATABLES namespace
 
-  
+SESSION_DATATABLES = {
+  rebuildTable: function(sessionTable){
+    table.state(); //CHECK 01 sets the state of the table we might be able to remove this from the function
+    table.clear().draw();
+    //want all JSON parsing done in function so interfaces don't have to worry about it
+    table.rows.add(JSON.parse(sessionTable)); // Add new data
+    table.columns.adjust().draw();
+  }, 
+  saveTableInSession: function(){
+    let sessionCart = '';
+    //again I prefer to have all JSON parsing done in function so interfaces don't have to worry about it
+    sessionCart = JSON.stringify($("#cart").DataTable().rows().data().toArray());
+    sessionStorage.setItem("savedCart", sessionCart);
+    sessionCart = sessionStorage.getItem("savedCart");
+    return sessionCart;
+  }
+}
 
 
   
