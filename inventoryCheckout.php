@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
-    <!-- do we really need more CSS? <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+ <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- begin our custom scripts -->
     <script type="text/javascript" src="string_building.js"></script>
@@ -173,7 +173,26 @@ $(document).ready(function(){
 
 
     //grab the user entry 
-    THROTTLE.entryTimerStart('userEntry');
+   // THROTTLE.entryTimerStart('userEntry');
+
+   $('#userEntry').autocomplete({
+       source: function (request, response){
+           $.ajax({
+               type:"POST", 
+               //url:"Scripts\\DB\\acLogic.php", 
+               url:"acLogic.php",
+               data:{term:request.term}, 
+               dataType: 'json', 
+               minLength: 2,
+               delay: 100,
+               success: function(data){
+                   console.log(data);
+                   response(data);
+               }
+
+           });
+       }
+   });
 
     //close any bootstrap warnings
     $('.alert .close').on('click', function(e){
