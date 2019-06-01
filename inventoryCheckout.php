@@ -88,7 +88,7 @@
 
 
         <div class="col-md-7">
-            <input type="text" class ="form-control" name="userEntry" id="userEntry" aria-describedby="userEntry" placeholder="Scan or enter UPC here">
+            <input type="text" class ="form-control" name="userEntry" id="userEntry" aria-describedby="userEntry" placeholder="Scan or enter UPC here" autocomplete="off">
         </div>
         <div class ="col-md-5">
             <div class="add_button_holder" align="right">
