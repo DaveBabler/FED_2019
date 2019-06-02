@@ -192,8 +192,10 @@ $(document).ready(function(){
 
            });
        }, 
-       select: function (event, ui) {        
+       select: function (event, ui) {    
+        event.preventDefault();
         AUTO_COMPLETE.selectWrapper(ui);
+        return false;
   },
    });
 

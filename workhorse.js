@@ -206,6 +206,8 @@ AUTO_COMPLETE = {
       }else{
         AJAX_TO_DATATABLES.createRow(ui.item);
       }
+    //clear user input
+    $('#userEntry').val('');
     return false;
   }, 
 
