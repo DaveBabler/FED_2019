@@ -103,6 +103,9 @@ function wipe_data(alert_id_num){
 AJAX_TO_DATABASE = {
 
   ajaxSearch: function(searchData){
+    /*This search function is used if an autocomplete is not.  So it's built and ready to go in the event 
+    that autocomplete is not desireable for page logic, or stakeholder desires
+    --Dave Babler */
     if(searchData === '' || searchData == '' || searchData == null || searchData === undefined) {
       //prevent an emptied field from selecting random data.
         console.log("No data currently selected and/or empty value set");
@@ -141,7 +144,8 @@ AJAX_TO_DATABASE = {
         console.log("the only thing above this should be a response from AJAX");
       }
     })
-  }
+  }, 
+    
 
 } //end AJAX_TO_DATABASE namespace
 
@@ -187,6 +191,27 @@ AJAX_TO_DATATABLES = {
 
 
 }//end AJAX_TO_DATATABLES namespace
+
+
+AUTO_COMPLETE = {
+  selectWrapper: function(ui){
+    /*wrapper function that goes in the jquery autocomplete select API
+      this function wraps up all the misc. functions that need to fire upon selection*/
+    console.log("in select logic");
+    console.log(ui.item);
+    console.log("---------------------");
+    console.log(ui.item['cartUPC']);
+      if(ui.item['cartQuantity']<1){
+        AJAX_TO_DATATABLES.zeroInventory(ui.item);
+      }else{
+        AJAX_TO_DATATABLES.createRow(ui.item);
+      }
+    return false;
+  }, 
+
+
+}
+
 
 SESSION_DATATABLES = {
   rebuildTable: function(sessionTable){

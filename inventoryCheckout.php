@@ -193,9 +193,7 @@ $(document).ready(function(){
            });
        }, 
        select: function (event, ui) {        
-          alert(JSON.stringify(ui.item));
-          console.log(typeof ui.item);
-          return false;
+        AUTO_COMPLETE.selectWrapper(ui);
   },
    });
 
