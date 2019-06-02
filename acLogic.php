@@ -31,25 +31,28 @@ $searchStmtPrepper = $searchStmt->execute(
         die('Prepare Failed on var  \'searchStmtPrepper\' contact DBA with the following code: ' . htmlspecialchars($searchStmtPrepper));
     }
 	while($row = $searchStmt->fetch()){
-    $autoCompleteItem = [
+    $autoCompleteItem[] = array(
         'autoCompletePopulateUPC' => $row['UPC'], 
-        'autoCompletePopulateDescription' => $row['DESCRIPTION'],
+        'label' => $row['DESCRIPTION'], //must use these generic terms to get the jquery UI to work ONLY label and value work
+        'value' => $row['DESCRIPTION'],
         //'autoCompletePopulateImage' => $row['IMAGE'], 
         //'autoCompletePopulateType_ID' => $row['TYPE_ID']
         'autoCompletePopulateQuantity' => $row['QUANTITY'],
         'autoCompleteFlag' => 1
-    ];
+    );
 }
-   if($autoCompleteItem['autoCompletePopulateQuantity']==0){
-    	$zeroQuantStatement = array();
-    	$zeroQuantStatement['autoCompleteFlag'] = 0;
-    	$zeroQuantStatement['autoCompletePopulateUPC'] = $autoCompleteItem['autoCompletePopulateUPC'];
-    	$zeroQuantStatement['autoCompletePopulateDescription'] = $autoCompleteItem['autoCompletePopulateDescription']." Zero Quantity on Hand!";
+//    if($autoCompleteItem['autoCompletePopulateQuantity']==0){
+//     	$zeroQuantStatement = array();
+//     	$zeroQuantStatement['autoCompleteFlag'] = 0;
+//     	$zeroQuantStatement['autoCompletePopulateUPC'] = $autoCompleteItem['autoCompletePopulateUPC'];
+//     	$zeroQuantStatement['autoCompletePopulateDescription'] = $autoCompleteItem['autoCompletePopulateDescription']." Zero Quantity on Hand!";
 
-    	echo json_encode($zeroQuantStatement);
-    }else{
-    echo json_encode($autoCompleteItem);
-    }	 
-    //echo json_encode($autoCompleteItem);
+//     	echo json_encode($zeroQuantStatement);
+//     }else{
+//     echo json_encode($autoCompleteItem);
+//      }	 
+   
+   
+     echo json_encode($autoCompleteItem);
     //JUSTIN, THE SCRIPT MAY REQUIRE YOU TO USE RETURN OR A SOMETHING ELSE, PLEASE DOUBLE CHECK THE DOCUMENTATION
 ?>
