@@ -21,7 +21,7 @@
  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- begin our custom scripts -->
-    <script type="text/javascript" src="string_building.js"></script>
+    <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js"></script>
     <script type="text/javascript" src="workhorse.js"></script>
     <!-- end our custom scripts -->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.css">
