@@ -196,7 +196,15 @@ $(document).ready(function(){
         event.preventDefault();
         AUTO_COMPLETE.selectWrapper(ui);
         return false;
-  },
+        },
+        response: function(event, ui){
+            //This is responsible for force selection when only one option
+            if(ui.content.length==1){
+                ui.item = ui.content[0];
+                $(this).data('ui-autocomplete')._trigger('select', 'autocompleteselect', ui);
+                $(this).autocomplete('close');
+            }
+        }
    });
 
     //close any bootstrap warnings
