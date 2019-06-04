@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include('db.php');
+  include('db.php'); 
   $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
 <!DOCTYPE html>
