@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include('db.php'); 
+  require('/home/dbabler/dbabler.yaacotu.com/FED_2020/config.php'); 
   $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
 <!DOCTYPE html>

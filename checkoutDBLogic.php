@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+require('/home/dbabler/dbabler.yaacotu.com/FED_2020/config.php');
 include('function.php');
 $queryType = $_POST['queryType'][0];
 unset($cartItem);

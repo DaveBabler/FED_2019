@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+require('/home/dbabler/dbabler.yaacotu.com/FED_2020/config.php');
 include('function.php');
 if(isset($_POST["user_id"]))
 {

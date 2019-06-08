@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+require('/home/dbabler/dbabler.yaacotu.com/FED_2020/config.php');
 include('function.php');
 /*WARNING WARNING WARNING
 THIS SCRIPT WILL BE FOLDED INTO "checkoutDBLogic.php"*/
