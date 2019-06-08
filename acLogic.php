@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+
 include('function.php');
 $queryType = $_POST['queryType'][0];
 unset($autoCompleteItem);
