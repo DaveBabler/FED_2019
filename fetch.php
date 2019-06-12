@@ -1,7 +1,8 @@
 <?php
 session_start();
 include('db.php');
-include('function.php');
+include('/home/dbabler/dbabler.yaacotu.com/FED_2020/Scripts/DB/function.php');
+//include('function.php');
 
 $trimmedSearchValue = $_POST["search"]["value"];
 $leadingZero = 0;
