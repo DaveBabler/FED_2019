@@ -2,7 +2,7 @@
 
 function get_total_all_records()
 {
-	include('db.php');
+	include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
 	$statement = $connection->prepare("SELECT * FROM INVENTORY");
 	$statement->execute();
 	$result = $statement->fetchAll();

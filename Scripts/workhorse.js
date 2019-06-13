@@ -30,7 +30,7 @@ function wipe_data(alert_id_num){
   function getFoodType(numericTypeID){
     let newData;
     $.ajax({
-    url:"home/dbabler/dbabler.yaacotu.com/FED_2020/Scripts/DB/pdo_select_type.php",
+    url:"http://dbabler.yaacotu.com/FED_2020/Scripts/DB/pdo_select_type.php",
     async: false, 
     method:'POST',
     dataType:'json',

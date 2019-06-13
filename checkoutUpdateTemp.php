@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
 include('function.php');
 /*WARNING WARNING WARNING
 THIS SCRIPT WILL BE FOLDED INTO "checkoutDBLogic.php"*/
