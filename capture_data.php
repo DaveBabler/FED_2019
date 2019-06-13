@@ -1,6 +1,6 @@
 <?php
 include('db.php');
-include('/home/dbabler/dbabler.yaacotu.com/FED_2020/Scripts/DB/function.php');
+include('/home/dbabler/dbabler.yaacotu.com/FED_2020/Scripts/PHP/function.php');
 if(isset($_POST["user_id"])){
     $output = array();
     $output["upc_exists"] = does_upc_exist($_POST["user_id"]);
