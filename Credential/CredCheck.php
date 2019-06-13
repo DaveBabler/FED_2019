@@ -1,5 +1,5 @@
 <?php
-include_once("../db.php");
+include_once('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
 $grantAccess = false;
 //sanitize the email first
 //$email =  filter_var($_POST['emailUser'], FILTER_SANITIZE_EMAIL);  
