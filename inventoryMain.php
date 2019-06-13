@@ -442,7 +442,7 @@ $(document).ready(function(){
     $('#additional_info').css('display','none');
     $('#fetch').css('display','none');
     $.ajax({
-      url:"fetch_single.php",
+      url:"Scripts\\DB\\fetch_single.php",
       method:"POST",
       data:{user_id:user_id},
       dataType:"json",
@@ -483,7 +483,7 @@ $(document).ready(function(){
     var del_image;
  
     $.ajax({
-      url:"fetch_single.php",
+      url:"Scripts\\DB\\fetch_single.php",
       method:"POST",
       data:{user_id:user_id},
       dataType:"json",
