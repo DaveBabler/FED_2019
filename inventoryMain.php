@@ -1,11 +1,11 @@
 <?php
   session_start();
-  include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php'); 
+  include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
   $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta charset ="UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,7 +20,7 @@
     <!-- begin our custom scripts -->
     <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js"></script>
     <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/workhorse.js"></script>
-    <script type="text/javascript" src='/home/dbabler/dbabler.yaacotu.com/FED_2020/Scripts/workhorse.js'></script>
+   
     <!-- end our custom scripts -->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -287,7 +287,7 @@ $(document).ready(function(){
     var food_type_string = ""; //use this to grab the textual food type.
     if(user_id !='' && description != '' && quantity != '' && food_type != 0) {
       $.ajax({
-        url:"insert.php",
+        url:"http://dbabler.yaacotu.com/FED_2020/Scripts/DB/insert.php",
         method:'POST',
         data:new FormData(this),
         contentType:false,
@@ -509,7 +509,7 @@ $(document).ready(function(){
     });
     if(confirm("Are you sure you want to delete this?")) {
       $.ajax({
-          url:"delete.php",
+          url:"http://dbabler.yaacotu.com/FED_2020/Scripts/DB/delete.php",
           method:"POST",
           data:{user_id:user_id},
           success:function(data)

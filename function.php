@@ -1,5 +1,5 @@
 <?php
-
+	//require('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
 function get_total_all_records()
 {
 	include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
@@ -43,7 +43,7 @@ function is_upc_valid($numberUPC){
     return $result;
 }
 function does_upc_exist($numberUPC){
-    include ('db.php');
+	require '/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php';
     $bool_value = 1;
     $statement = $connection->prepare("SELECT * FROM INVENTORY WHERE UPC = :UPC");
     $statement->execute(
