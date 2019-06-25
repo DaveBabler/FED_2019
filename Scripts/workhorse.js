@@ -113,7 +113,7 @@ AJAX_TO_DATABASE = {
       let queryType = new Array("SEARCH");//I assume passing it as an array is what will let AJAX take it.
       $.ajax({
         type: "POST", 
-        url: 'checkoutDBLogic.php', 
+        url: '/FED_2020/Scripts/DB/checkoutDBLogic.php', 
         data:{'searchData': searchData, 
               'queryType': queryType}, 
         dataType: "json",
@@ -134,7 +134,7 @@ AJAX_TO_DATABASE = {
     let queryType = new Array("CHECKOUT"); //my assumptions in AJAX_TO_DATABASE.ajaxSearch were correct
     $.ajax({
       type: "POST", 
-      url: 'checkoutDBLogic.php', 
+      url: '/FED_2020/Scripts/DB/checkoutDBLogic.php', 
       data:{'cartData': cartData, 
             'queryType': queryType}, 
       dataType: "text",

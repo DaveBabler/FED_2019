@@ -150,7 +150,8 @@ var table = $('#cart').DataTable({
         {"data": 'TypeID'}, 
     ], 
     "ajax": {
-    "url": "checkoutDBLogic.php",
+    //"url": "checkoutDBLogic.php",
+    "url":"/FED_2020/Scripts/DB/checkoutDBLogic.php", 
     "data": {
         "queryType": "temp",        
     }
