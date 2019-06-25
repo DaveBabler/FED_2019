@@ -251,7 +251,7 @@ $(document).ready(function(){
       "serverSide":true,
       "order":[],
       "ajax":{
-          url:"fetch.php",
+          url:'/FED_2020/Scripts/DB/fetch.php',
           type:"POST",
           data: {is_category:is_category} //3
       },
