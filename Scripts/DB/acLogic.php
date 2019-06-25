@@ -7,7 +7,7 @@ unset($autoCompleteItem);
 
 
 //begin search function
-$trimmedSearchValue = /*JUSTIN ASSIGN YOUR GET VARIABLE HERE!!!!! AND ONLY HERE */
+$trimmedSearchValue = $_POST['term']; //see ajax call 
 
 $leadingZero = 0;
 //drop leading zeros
@@ -31,24 +31,19 @@ $searchStmtPrepper = $searchStmt->execute(
         die('Prepare Failed on var  \'searchStmtPrepper\' contact DBA with the following code: ' . htmlspecialchars($searchStmtPrepper));
     }
 	while($row = $searchStmt->fetch()){
-    $autoCompleteItem = [
-        'autoCompletePopulateUPC' => $queryResult['UPC'], 
-        'autoCompletePopulateDescription' => $queryResult['DESCRIPTION'],
-        //'autoCompletePopulateImage' => $queryResult['IMAGE'], 
-        //'autoCompletePopulateType_ID' => $queryResult['TYPE_ID']
-        'autoCompletePopulateQuantity' => $queryResult['QUANTITY'],
-        'autoCompleteFlag' => 1
-    ];
+        $cartItem[] = array(
+            'label' => $row['DESCRIPTION'], //must use these generic terms to get the jquery UI to work ONLY label and value work
+            'value' => $row['DESCRIPTION'],
+            'cartUPC' => $row['UPC'], 
+            'cartDescription' => $row['DESCRIPTION'],
+            'cartImage' => $row['IMAGE'], 
+            'cartType_ID' => $row['TYPE_ID'], 
+            'cartQuantity' => $row['QUANTITY'],
+            'autoCompleteFlag' => 1        
+        );
 }
-    if($autoCompleteItem['autoCompletePopulateQuantity']==0){
-    	$zeroQuantStatement = array();
-    	$zeroQuantStatement['autoCompleteFlag'] = 0;
-    	$zeroQuantStatement['autoCompletePopulateUPC'] = $autoCompleteItem['autoCompletePopulateUPC'];
-    	$zeroQuantStatement['autoCompletePopulateDescription'] = $autoCompleteItem['autoCompletePopulateDescription']." Zero Quantity on Hand!";
-
-    	echo json_encode($zeroQuantStatement);
-    }else{
-    echo json_encode($autoCompleteItem);
-	}	
-    //JUSTIN, THE SCRIPT MAY REQUIRE YOU TO USE RETURN OR A SOMETHING ELSE, PLEASE DOUBLE CHECK THE DOCUMENTATION
+ 
+ 
+     echo json_encode($cartItem);
+  
 ?>
