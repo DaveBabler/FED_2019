@@ -150,9 +150,9 @@ var table = $('#cart').DataTable({
         {"data": 'TypeID'}, 
     ], 
     "ajax": {
-    "url": "checkoutUpdateTemp.php",
+    "url": "checkoutDBLogic.php",
     "data": {
-        "user_id": 451
+        "queryType": "temp",        
     }
   }
 
