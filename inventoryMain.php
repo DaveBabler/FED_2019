@@ -346,7 +346,7 @@ $(document).ready(function(){
     var user_id =$('#upc').val();
     resetErrorMessages();
     $.ajax({
-      url: "capture_data.php",
+      url: "/FED_2020/Scripts/PHP/capture_data.php",
       method: "POST",
       data:{user_id:user_id},
       dataType: "json",
