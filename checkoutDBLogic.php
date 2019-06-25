@@ -74,6 +74,15 @@ if($queryType == 'SEARCH'){
 
     echo json_encode($successArray);
 
+}elseif($queryType="temp"){
+    if(!$_SESSION['POST']){
+        $_SESSION['POST'] = array();
+       }
+       foreach ($_POST as $key => $value) {
+           $_SESSION['POST'][$key] = $value;
+       }
+       
+       echo json_encode($_SESSION['POST']);
 }
 
 
