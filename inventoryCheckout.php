@@ -179,8 +179,7 @@ $(document).ready(function(){
        source: function (request, response){
            $.ajax({
                type:"POST", 
-               //url:"Scripts\\DB\\acLogic.php", 
-               url:"acLogic.php",
+               url:"/FED_2020/Scripts/DB/acLogic.php", 
                data:{term:request.term}, 
                dataType: 'json', 
                minLength: 2,
