@@ -3,6 +3,10 @@
   grid-template-columns: 22.5% 55% 22.5%;
   grid-template-rows: 22.5% 60.2% 22.5%;
   grid-template-areas: "Block01 Block02 Block03" "Block04 Block05 Block06" "Block07 Block08 Block09";
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  justify-items: stretch;
+  align-items: stretch;
 }
 
 .Block01 { grid-area: Block01; }
