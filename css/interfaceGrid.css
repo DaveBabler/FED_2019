@@ -1,0 +1,24 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 22.5% 55% 22.5%;
+  grid-template-rows: 22.5% 60.2% 22.5%;
+  grid-template-areas: "Block01 Block02 Block03" "Block04 Block05 Block06" "Block07 Block08 Block09";
+}
+
+.Block01 { grid-area: Block01; }
+
+.Block02 { grid-area: Block02; }
+
+.Block03 { grid-area: Block03; }
+
+.Block05 { grid-area: Block05; }
+
+.Block04 { grid-area: Block04; }
+
+.Block06 { grid-area: Block06; }
+
+.Block07 { grid-area: Block07; }
+
+.Block08 { grid-area: Block08; }
+
+.Block09 { grid-area: Block09; }
