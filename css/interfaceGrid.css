@@ -1,28 +1,60 @@
-.grid-container {
+.grid-container_1 {
   display: grid;
   grid-template-columns: 22.5% 55% 22.5%;
-  grid-template-rows: 22.5% 60.2% 22.5%;
-  grid-template-areas: "Block01 Block02 Block03" "Block04 Block05 Block06" "Block07 Block08 Block09";
+  grid-template-rows: 22.5% 55% 22.5%;
+  grid-template-areas: "Block_1_01 Block_1_02 Block_1_03" "Block_1_04 Block_1_05 Block_1_06" "Block_1_07 Block_1_08 Block_1_09";
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   justify-items: stretch;
   align-items: stretch;
+  height: 100vh; /* new */
 }
 
-.Block01 { grid-area: Block01; }
+.Block_1_01 { grid-area: Block_1_01; }
 
-.Block02 { grid-area: Block02; }
+.Block_1_02 { grid-area: Block_1_02; }
 
-.Block03 { grid-area: Block03; }
+.Block_1_03 { grid-area: Block_1_03; }
 
-.Block05 { grid-area: Block05; }
+.Block_1_05 { grid-area: Block_1_05; }
 
-.Block04 { grid-area: Block04; }
+.Block_1_04 { grid-area: Block_1_04; }
 
-.Block06 { grid-area: Block06; }
+.Block_1_06 { grid-area: Block_1_06; }
 
-.Block07 { grid-area: Block07; }
+.Block_1_07 { grid-area: Block_1_07; }
 
-.Block08 { grid-area: Block08; }
+.Block_1_08 { grid-area: Block_1_08; }
 
-.Block09 { grid-area: Block09; }
+.Block_1_09 { grid-area: Block_1_09; }
+
+
+.grid-container_2 {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 10% 80% 10%;
+  grid-template-areas: "Block_2_01 Block_2_02 Block_2_03" "Block_2_04 Block_2_05 Block_2_06" "Block_2_07 Block_2_08 Block_2_09";
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  justify-items: stretch;
+  align-items: stretch;
+  height: 100vh; /* new */
+}
+
+.Block_2_01 { grid-area: Block_2_01; }
+
+.Block_2_02 { grid-area: Block_2_02; }
+
+.Block_2_03 { grid-area: Block_2_03; }
+
+.Block_2_05 { grid-area: Block_2_05; }
+
+.Block_2_04 { grid-area: Block_2_04; }
+
+.Block_2_06 { grid-area: Block_2_06; }
+
+.Block_2_07 { grid-area: Block_2_07; }
+
+.Block_2_08 { grid-area: Block_2_08; }
+
+.Block_2_09 { grid-area: Block_2_09; }
