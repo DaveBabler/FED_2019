@@ -93,7 +93,25 @@
   <div class="container-fluid">
 	    <div class="row">
 				<div class="col-md-12">
-                    Inside Bootstrap Column Inside CSS Grid The Table Goes here!
+        <div class="row">
+        <div class="table-responsive">
+		<div class="col-md-12">
+            <table id="InventoryTable" class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th class="col-xs-1">Image</th>
+            <th class="col-xs-1">UPC</th>
+            <th class="col-xs-1">Item-Type</th>
+						<th class="col-xs-6">Description</th>
+            <th class="col-xs-3">Update</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+        
+    </div>
 				</div>
             </div>
         </div>
