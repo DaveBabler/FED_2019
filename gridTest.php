@@ -23,6 +23,29 @@
     <script type="text/javascript" src="Credential\credential_workhorse.js"></script>
     <link rel="stylesheet" type="text/css" href="http://dbabler.yaacotu.com/FED_2020/css/interfaceGrid.css">
   <head>
+  <style>
+  .vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}
+  </style>
 
 <div class="grid-container">
   <div class="Block01"></div>
@@ -85,57 +108,49 @@
   <div class="Block09"></div>
 </div>
 
-<div id="userModal" class="modal fade">
-  <div class="modal-dialog">
-    <form method="post" id="user_form" enctype="multipart/form-data">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Item</h4>
-        </div>
-        <div class="modal-body">
-          <img id="itemimage" name = "itemimage" style ="display: block; margin-left: auto; margin-right: auto; max-width: 300px; max-height: 300px; object-fit: scale-down;">
-          <br />
-          <label>UPC</label>
-          <i class="fas fa-times-circle" style="display:none;"></i>
-          <i class="fas fa-check-circle" style="display:none;"></i>
-          <input type="text" name = "upc" id ="upc" class="form-control" autocomplete="off"  />
-          <span id="valid_upc"></span>
-          <br />
-          <label>Description</label>
-          <input type="text" name="description" id="description" class="form-control" autocomplete="off" />
-          <span id="valid_description"></span>
-          <br />
-          <label>Food Type</label>
-          <select name = "foodtype" id="foodtype" class ="form-control">
-            <?php
-                        foreach($connection->query($query) as $row){
-                          echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
-                        }
-            ?>
-
-          </select>
-          <br />
-          <label>Quantity</label>
-          <input type="text" name="quantity" id="quantity" class="form-control" autocomplete="off"/>
-          <span id="valid_quantity"></span>
-          <br />
-          <label>Image Location</label>
-          <input type="text" name="image_location" id="image_location" class="form-control" autocomplete="off" />
-          <br />
-          <span id="additional_info"></span>
-          <br />
-        </div>
-        <div class="modal-footer">
-          <input type="hidden" name="user_id" id="user_id" />
-          <input type="hidden" name="operation" id="operation" />
-          <button type ="button" name ="fetch" id ="fetch" class = "btn btn-success" style ="float: left;">Fetch Data</button>
-          <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
-
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+<div id="userModal" class="modal fade" tabindex="-1" aria-labelledby="upcEntryModalTitle"">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-dialog">
+        <form method="post" id="user_form" enctype="multipart/form-data">
+          <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+              <h4 class="modal-title" id="upcEntryModalTitle">Add Item</h4>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                          <form>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Example label</label>
+                              <input type="number" class="form-control" id="upcEntry" placeholder="Scan or type upc here">
+                              <!-- Note from babler: rather than mess with arcane javascript regex let's just use HTML 5's "number attribute!" -->
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          
+                          <button type="button" class="btn btn-success">
+                            Button
+                          </button>
+                        </div>
+                            <div class="col-md-3">
+                              <button type="button" class="btn btn-warning"  class="close" data-dismiss="modal">Cancel</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 
@@ -311,7 +326,7 @@ $(document).ready(function(){
     }
   });
 	
-  $(document).on('click','#fetch', function(event){
+/*   $(document).on('click','#fetch', function(event){
     event.preventDefault();
     var user_id =$('#upc').val();
     resetErrorMessages();
@@ -396,7 +411,7 @@ $(document).ready(function(){
         }
       }
     })
-  });
+  }); */
   
   $(document).on('click', '.update', function() {
     type_of_insertion = "SQL_Update";
