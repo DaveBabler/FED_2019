@@ -266,4 +266,18 @@ SESSION_CLOSING = {
 }//end SESSION_CLOSING namespace 
 
 
+var INPUT_CONTROLS = INPUT_CONTROLS || {};
+
+INPUT_CONTROLS = {
+  upc12Digits:function(digits){
+    /** If the digits are less than 12 show a helper field, 
+     * if not then proceed with normal logic
+     */
+    if(digits < 12){
+      $("#upcHelper").show();
+    }else{
+      $("#upcHelper").hide();
+  }
+  }
   
+}
