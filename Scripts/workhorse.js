@@ -145,9 +145,23 @@ AJAX_TO_DATABASE = {
       }
     })
   }, 
+
+  ajaxInventoryCheckUPC: function(){
+    let upcEntry = $("#upcEntry").val();
+    $.ajax({
+      url: "/FED_2020/Scripts/PHP/upcVerify.php",
+      method: "POST",
+      data:{upcEntry:upcEntry},
+      dataType: "json",
+      success: function(data){
+        console.log(JSON.stringify(data));
+      }
+
+  });
     
 
-} //end AJAX_TO_DATABASE namespace
+} 
+}//end AJAX_TO_DATABASE namespace
 
 
 AJAX_TO_DATATABLES = {
@@ -277,6 +291,7 @@ INPUT_CONTROLS = {
       $("#upcHelper").show();
     }else{
       $("#upcHelper").hide();
+      AJAX_TO_DATABASE.ajaxInventoryCheckUPC();
   }
   }
   

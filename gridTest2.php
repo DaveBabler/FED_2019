@@ -208,7 +208,7 @@
     $("#upcEntry").on('input', function(){
         upcDigitCounter++;
         let value = $(this).val();
-
+        INPUT_CONTROLS.upc12Digits(upcDigitCounter);
 
     })
 	
