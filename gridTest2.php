@@ -210,7 +210,7 @@
         <div class="modal-footer">
           <input type="hidden" name="user_id" id="user_id" />
           <input type="hidden" name="operation" id="operation" />
-          <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+          <input type="submit" name="insertExternalUPC" id="insertExternalUPC" class="btn btn-success" value="Add" />
 
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -253,12 +253,27 @@
     load_data();//1
 
     $("#upcEntry").css({backgroundColor: 'orange'});;
-    $("#upcEntry").on('input', function(){
-        upcDigitCounter++;
+    $("#upcEntry").on('input change keyup', function(event){
+      if(event.keyCode == 8 || event.keyCode == 46 ){
+          /**I just want to completely ignore any and all backspace
+           * and delete presses, and not even accidentally capture them as
+           * values.  Dave Babler
+           */
+            console.log(event); 
+            console.log(event.keyCode);
+      }else{
         let value = $(this).val();
-        INPUT_CONTROLS.upc12Digits(upcDigitCounter);
+        let valueLength = value.length;
+        console.log("Value length = "+valueLength);
+       INPUT_CONTROLS.upc12Digits(valueLength);
 
-    })
+      }
+
+    });
+
+    $("#insertExternalUPC").on("click", function(e){
+          AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
+    });
 	
   });
 

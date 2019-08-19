@@ -4,8 +4,8 @@ include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
 include('/home/dbabler/dbabler.yaacotu.com/FED_2020/Scripts/PHP/function.php');
 if(isset($_POST["operation"]))
 {
-	if($_POST["operation"] == "Add")
-	{
+	if($_POST["operation"] == "Add"){
+        /** This should be depreciated soon. --Dave Babler 2019-08-19 */
         $output = array();
         $output["upc_exists"] = does_upc_exist($_POST["user_id"]);
         $output["valid_upc"] = is_upc_valid($_POST["user_id"]);
@@ -27,6 +27,42 @@ if(isset($_POST["operation"]))
 				    ':image'		=>	$_POST["image_location"],
                     ':UPC'			=>	$_POST["upc"],
                     ':type_id'      =>  $_POST["foodtype"]
+                )
+            );
+            if(!empty($result)){
+                echo 'Data Inserted.';
+            } 
+        }
+        else{
+            echo ' Data not Inserted';
+        }
+    }
+    
+    if($_POST["operation"] == "newAdd"){
+        /**For adding to database using the new modal -- Dave Babler 2019-08-19 */
+
+        $output = array();
+        $lv_UPC = $_POST['foundExternalUPC'];
+        $output["upc_exists"] = does_upc_exist($lv_UPC);
+        $output["valid_upc"] = is_upc_valid($lv_UPC);
+        if ($output["upc_exists"]!=0){
+            echo 'UPC already exist in database.';
+        }
+        if ($output["valid_upc"]!=1){
+            echo 'Entered data is not a valid UPC.';
+        }
+        if ($output["upc_exists"]==0 && $output["valid_upc"]==1){
+            $statement = $connection->prepare("
+			INSERT INTO INVENTORY (UPC, DESCRIPTION, QUANTITY, IMAGE, TYPE_ID) 
+			VALUES (:UPC, :description, :quantity, :image, :type_id)
+            ");
+            $result = $statement->execute(
+                array(
+                    ':description'	=>	$_POST["descriptionExternalUPC"],
+				    ':quantity'	    =>	$_POST["quantityExternalUPC"],
+				    ':image'		=>	$_POST["imageLocationExternalUPC"],
+                    ':UPC'			=>	$lv_UPC,
+                    ':type_id'      =>  $_POST["foodTypeExternalUPC"]
                 )
             );
             if(!empty($result)){
