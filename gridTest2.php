@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script type="text/javascript" src="Credential\credential_workhorse.js"></script>
-    <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js"></script>
     <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/workhorse.js"></script>
+    <!-- <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js"></script> -->
 
     <link rel="stylesheet" type="text/css" href="http://dbabler.yaacotu.com/FED_2020/css/interfaceGrid.css">
 
@@ -150,7 +150,7 @@
                                       </div>
                                   </div>
                                   <div class="col-md-3">
-                                    <button type="button" class="btn btn-success">Button</button>
+                                    <button type="button" id="manualUPCcheck" name="manualUPCcheck" class="btn btn-success">Button</button>
                                   </div>
                                   <div class="col-md-3">
                                         <button type="button" class="btn btn-warning"  class="close" data-dismiss="modal">Cancel</button>
@@ -225,9 +225,7 @@
 
  
   
-  $('#inventory_table').DataTable().destroy();
-  load_data();//1
-  
+
   function load_data (is_category) {
         var dataTable = $('#inventory_table').DataTable({
         "processing":true,
@@ -271,10 +269,42 @@
 
     });
 
+    $('.alert .close').on('click', function(e) {
+      /** We want things to be able to close */
+        $(this).parent().hide();
+     });
     $("#insertExternalUPC").on("click", function(e){
           AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
+      });
+
+    $("#manualUPCcheck").on("click", function(){
+             let lv_foundExternalUPC = "0123456879";
+            let lv_descriptionExternalUPC = "something";
+            let lv_quantityExternalUPC = 3;
+            let lv_imageLocationExternalUPC ="http://i67.tinypic.com/vru69u.jpg";
+
+            let inc_insert_obj = {
+                        outer_upc_var: user_id.toString(),
+                        outer_descript_var: lv_descriptionExternalUPC.toString(),
+                        outer_quant_var: lv_quantityExternalUPC.toString(),
+                        outer_image_var: lv_imageLocationExternalUPC.toString(),
+                    };
+            let lv_type_of_insertion = "SQL_Insert";
+
+            let insert_temp = alert_type_summon_arguments(lv_type_of_insertion, inc_insert_obj);
+
+            $("#returned_delete").html(insert_temp);
+
+
+      $("#userModal").modal('hide');
+      $("#delete_succeed_box").show();
+      $("#returned_delete").fadeTo(5000, 500).slideUp(500, function() {
+                            $("#returned_delete").slideUp(500);
+        }); 
+
+
     });
-	
+    
   });
 
 

@@ -195,22 +195,60 @@ AJAX_TO_DATABASE = {
 
         ajaxExternallyFoundUPC: function() {
             let operation = "newAdd";
+            var lv_foundExternalUPC = $("#foundExternalUPC").text();
+            var lv_descriptionExternalUPC = $("#descriptionExternalUPC").val();
+            var lv_quantityExternalUPC = $("#quantityExternalUPC").val();
+            var lv_imageLocationExternalUPC = $("#imageLocationExternalUPC").val();
+            var lv_foodTypeExternalUPC = $("#foodTypeExternalUPC").val();
+            var successFlag = false;
+
             $.ajax({
                 type: "POST",
                 url: '/FED_2020/Scripts/DB/insert.php',
                 data: {
                     'operation': operation,
-                    'foundExternalUPC': $("#foundExternalUPC").text(),
-                    'descriptionExternalUPC': $("#descriptionExternalUPC").val(),
-                    'quantityExternalUPC': $("#quantityExternalUPC").val(),
-                    'imageLocationExternalUPC': $("#imageLocationExternalUPC").val(),
-                    'foodTypeExternalUPC': $("#foodTypeExternalUPC").val(),
+                    'foundExternalUPC': lv_foundExternalUPC,
+                    'descriptionExternalUPC': lv_descriptionExternalUPC,
+                    'quantityExternalUPC': lv_quantityExternalUPC,
+                    'imageLocationExternalUPC': lv_imageLocationExternalUPC,
+                    'foodTypeExternalUPC': lv_foodTypeExternalUPC,
                 },
+                async: false,
                 dataType: "json",
                 success: function(insertMessage) {
                     console.log("You have successefully inserted: " + insertMessage);
+                    /**Output the stringbuilding function */
+                    console.log("found external UPC inside of the success function " + lv_foundExternalUPC);
+                    successFlag = true;
+                    alert("Success flag = " + successFlag);
+
+
                 },
             });
+            if (successFlag) {
+                var inc_insert_obj = {
+                    outer_upc_var: lv_foundExternalUPC.toString(),
+                    outer_descript_var: lv_descriptionExternalUPC.toString(),
+                    outer_quant_var: lv_quantityExternalUPC.toString(),
+                    outer_image_var: lv_imageLocationExternalUPC.toString(),
+                };
+                var type_of_insertion = "SQL_Insert";
+                $.getScript("http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js", function(type_of_insertion, inc_obj) {
+
+                    let insert_html = alert_type_summon_arguments(type_of_insertion, inc_insert_obj);
+                    console.log(insert_html);
+                    $("#returned_update").html(insert_html);
+                });
+                $("#insert_succeed_box").show();
+                $("#returned_update").fadeTo(5000, 500).slideUp(500, function() {
+                    $("#returned_update").slideUp(500);
+                });
+                $('#inventory_table').DataTable().destroy();
+                load_data(); //1
+
+
+
+            }
 
         },
     } //end AJAX_TO_DATABASE namespace
@@ -361,6 +399,32 @@ MODAL_MANIPULATION = {
         $("#quantityExternalUPC").val(externalData.quantity);
         $("#imageLocationExternalUPC").val(externalData.image_location);
         $("#showImageExternalUPC").attr("src", externalData.image_location);
+    }
+
+}
+
+
+OTHER_FILES = {
+    getItFromElsewhere: function(type_of_insertion, inc_obj) {
+        alert(type_of_insertion + "but from outside");
+        $.getScript("http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js", function(type_of_insertion, inc_obj) {
+            console.log("I am in the getscript");
+            alert("Type of insertion = " + type_of_insertion);
+            let insert_html = alert_type_summon_arguments(type_of_insertion, inc_obj);
+            console.log(insert_html);
+            $("#returned_update").html(insert_html);
+            $("#insert_succeed_box").show();
+            $("#returned_update").fadeTo(5000, 500).slideUp(500, function() {
+                $("#returned_update").slideUp(500);
+            });
+        }).fail(function() {
+            if (arguments[0].readyState == 0) {
+                //script failed to load
+            } else {
+                //script loaded but failed to parse
+                alert(arguments[2].toString());
+            }
+        });
     }
 
 }

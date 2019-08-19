@@ -66,11 +66,11 @@ if(isset($_POST["operation"]))
                 )
             );
             if(!empty($result)){
-                echo 'Data Inserted.';
+                echo json_encode('Data Inserted.');
             } 
         }
         else{
-            echo ' Data not Inserted';
+            echo json_encode(' Data not Inserted');
         }
 	}
 
