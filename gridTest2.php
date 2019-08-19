@@ -24,7 +24,7 @@
     <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/workhorse.js"></script>
 
     <link rel="stylesheet" type="text/css" href="http://dbabler.yaacotu.com/FED_2020/css/interfaceGrid.css">
-  <head>
+
 <style>
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
@@ -62,7 +62,7 @@
     pointer-events: all;
 }
 </style>
-
+</head>
 <div class="grid-container">
   <div class="Block01"></div>
   <div class="Block02"></div>
@@ -124,7 +124,7 @@
   <div class="Block09"></div>
 </div>
 
-<div id="userModal" class="modal fade" tabindex="-1" aria-labelledby="upcEntryModalTitle"">
+<div id="userModal" class="modal fade" tabindex="-1" aria-labelledby="upcEntryModalTitle">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
       <div class="modal-dialog">
@@ -135,33 +135,31 @@
               <h4 class="modal-title" id="upcEntryModalTitle">Add Item</h4>
             </div>
             <div class="modal-body">
-            <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-12">
+                <div class="container-fluid">
                       <div class="row">
-                          <form>
-                        <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="formGroupExampleInput">Example label</label>
-                              <input type="number" class="form-control" id="upcEntry" placeholder="Scan or type upc here">
-                              <div  id="upcHelper" class="upcHelper"> A UPC must have 12 digits, once all 12 are in, search will start. </div>
-                              <!-- Note from babler: rather than mess with arcane javascript regex let's just use HTML 5's "number attribute!" -->
+                        <div class="col-md-12">
+                          <div class="row">
+                              <form>
+                                  <div class="col-md-6">
+                                      <div class="form-group form-inline">
+                                            <label for="formGroupExampleInput">Example label</label>
+                                            <input type="number" class="form-control" id="upcEntry" placeholder="Scan or type upc here">
+                                            <div  id="upcHelper" class="upcHelper"> A UPC must have 12 digits, once all 12 are in, search will start. </div>
+                                            <!-- Note from babler: rather than mess with arcane javascript regex let's just use HTML 5's "number attribute!" -->
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <button type="button" class="btn btn-success">Button</button>
+                                  </div>
+                                  <div class="col-md-3">
+                                        <button type="button" class="btn btn-warning"  class="close" data-dismiss="modal">Cancel</button>
+                                  </div>
+                              </form>
                           </div>
                         </div>
-                        <div class="col-md-3">
-                          
-                          <button type="button" class="btn btn-success">
-                            Button
-                          </button>
-                        </div>
-                            <div class="col-md-3">
-                              <button type="button" class="btn btn-warning"  class="close" data-dismiss="modal">Cancel</button>
-                        </div>
-                        </form>
                       </div>
-                    </div>
                   </div>
-                </div>
+            </div> <!-- close modal body -->
             <div class="modal-footer">
             </div>
           </div>
@@ -170,8 +168,61 @@
     </div>
   </div>
 </div>
+<div id="addFoundExternalUpc" class="modal fade"> <!-- Originally the id was "userModal" -->
+  <div class="modal-dialog">
+    <form method="post" id="user_form" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">UPC found in external database!</h3><br>
+          <span>Please verify all information is correct before clicking "Add".</span>
+        </div>
+        <div class="modal-body">
+          <img id="itemimage" name = "itemimage" style ="display: block; margin-left: auto; margin-right: auto; max-width: 300px; max-height: 300px; object-fit: scale-down;">
+          <br />
+          <label>UPC</label>
+          <i class="fas fa-times-circle" style="display:none;"></i>
+          <i class="fas fa-check-circle" style="display:none;"></i>
+          <input type="text" name = "upc" id ="upc" class="form-control" autocomplete="off"  />
+          <span id="valid_upc"></span>
+          <br />
+          <label>Description</label>
+          <input type="text" name="description" id="description" class="form-control" autocomplete="off" />
+          <span id="valid_description"></span>
+          <br />
+          <label>Food Type</label>
+          <select name = "foodtype" id="foodtype" class ="form-control">
+            <?php
+                        foreach($connection->query($query) as $row){
+                          echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
+                        }
+            ?>
 
+          </select>
+          <br />
+          <label>Quantity</label>
+          <input type="text" name="quantity" id="quantity" class="form-control" autocomplete="off"/>
+          <span id="valid_quantity"></span>
+          <br />
+          <label>If the image is incorrect, find one online, and paste over the provided link below.</label>
+          <input type="text" name="image_location" id="image_location" class="form-control" autocomplete="off" />
+          <br />
+          <span id="addUPCimage"></span>
+          <br />
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="user_id" id="user_id" />
+          <input type="hidden" name="operation" id="operation" />
+          <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
 
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>                    
+
+</html>
 
 <script type="text/javascript" language="javascript" >
 

@@ -153,8 +153,34 @@ AJAX_TO_DATABASE = {
       method: "POST",
       data:{upcEntry:upcEntry},
       dataType: "json",
-      success: function(data){
-        console.log(JSON.stringify(data));
+      success: function(upcReturnedInfo){
+        console.log(JSON.stringify(upcReturnedInfo));
+         /** I am done, DONE, D-O-N-E playing around with how JavaScript deals with
+          * boolean flags, integers, and text, everything that is remotely close to an int
+          * shall now be force-cast as an int! --Dave Babler
+          */    
+        let isUPCValid = parseInt(upcReturnedInfo.valid_upc, 10);
+        let doesUPCExist = parseInt(upcReturnedInfo.upc_exists, 10);
+        let wasDataCapturedForUPC = parseInt(upcReturnedInfo.data_captured, 10);
+        if((isUPCValid) == 1){
+         /**Checking the flag to see if the upc is valid */
+           if(upcReturnedInfo.upc_exists == 0){
+             /** If the UPC does not exist in our database then it needs to be added.
+              * so we will run that module.
+              */
+             $("#userModal").modal({
+               show: false
+                 });
+
+             $("#addFoundExternalUpc").modal({
+              show: true
+               }); 
+
+      
+
+            }
+        }
+    
       }
 
   });
