@@ -147,7 +147,7 @@ AJAX_TO_DATABASE = {
   }, 
 
   ajaxInventoryCheckUPC: function(){
-    let upcEntry = $("#upcEntry").val();
+    var upcEntry = $("#upcEntry").val();
     $.ajax({
       url: "/FED_2020/Scripts/PHP/upcVerify.php",
       method: "POST",
@@ -175,7 +175,7 @@ AJAX_TO_DATABASE = {
              $("#addFoundExternalUpc").modal({
               show: true
                }); 
-
+            MODAL_MANIPULATION.foundExternalUPCModalFiller(upcReturnedInfo, upcEntry);
       
 
             }
@@ -306,14 +306,14 @@ SESSION_CLOSING = {
 }//end SESSION_CLOSING namespace 
 
 
-var INPUT_CONTROLS = INPUT_CONTROLS || {};
 
 INPUT_CONTROLS = {
   upc12Digits:function(digits){
     /** If the digits are less than 12 show a helper field, 
      * if not then proceed with normal logic
      */
-    if(digits < 12){
+    let lv_digits = parseInt(digits, 10);
+    if(lv_digits < 12){
       $("#upcHelper").show();
     }else{
       $("#upcHelper").hide();
@@ -321,4 +321,17 @@ INPUT_CONTROLS = {
   }
   }
   
+}
+
+
+MODAL_MANIPULATION = {
+
+  foundExternalUPCModalFiller: function(externalData, passedUPC){
+    $("#foundExternalUPC").text(passedUPC);
+    $("#descriptionExternalUPC").val(externalData.description);
+    $("#quantityExternalUPC").val(externalData.quantity);
+    $("#imageLocationExternalUPC").val(externalData.image_location);
+    $("#showImageExternalUPC").attr("src", externalData.image_location);
+  }
+
 }

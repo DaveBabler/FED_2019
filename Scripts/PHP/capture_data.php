@@ -51,6 +51,7 @@ if(isset($_POST["user_id"])){
             $json_USDA = curl_exec($ch1);
             curl_close ($ch1);
             $obj = json_decode($json_USDA,true);
+            $output["upcExternal"] = (isset($_POST["user_id"])? $_POST["user_id"]: "upc will not pass-back" );
             $output["jsontotal"] = $obj["list"]["total"];
             if ($obj ["list"]["total"] >0){
                 $desc = $obj["list"]["item"][0]["name"];

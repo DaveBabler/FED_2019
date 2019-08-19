@@ -1,6 +1,7 @@
 <?php
   session_start();
   include('/home/dbabler/dbabler.yaacotu.com/FED_2020/PULL_OUT_TO_SERVER/db.php');
+  $query      = "SELECT * FROM INV_TYPE ORDER BY TYPE_DESCRIPTION ASC";
 ?>
 
 <!DOCTYPE html>
@@ -178,20 +179,16 @@
           <span>Please verify all information is correct before clicking "Add".</span>
         </div>
         <div class="modal-body">
-          <img id="itemimage" name = "itemimage" style ="display: block; margin-left: auto; margin-right: auto; max-width: 300px; max-height: 300px; object-fit: scale-down;">
-          <br />
-          <label>UPC</label>
           <i class="fas fa-times-circle" style="display:none;"></i>
           <i class="fas fa-check-circle" style="display:none;"></i>
-          <input type="text" name = "upc" id ="upc" class="form-control" autocomplete="off"  />
-          <span id="valid_upc"></span>
+         <span><label>UPC: </label><label name = "foundExternalUPC" id ="foundExternalUPC"></label></span>
           <br />
           <label>Description</label>
-          <input type="text" name="description" id="description" class="form-control" autocomplete="off" />
+          <input type="text" name="descriptionExternalUPC" id="descriptionExternalUPC" class="form-control" autocomplete="off" />
           <span id="valid_description"></span>
           <br />
           <label>Food Type</label>
-          <select name = "foodtype" id="foodtype" class ="form-control">
+          <select name = "foodTypeExternalUPC" id="foodTypeExternalUPC" class ="form-control">
             <?php
                         foreach($connection->query($query) as $row){
                           echo '<option value = "'.$row["TYPE_ID"].'">'.$row["TYPE_DESCRIPTION"].'</option>';
@@ -201,13 +198,13 @@
           </select>
           <br />
           <label>Quantity</label>
-          <input type="text" name="quantity" id="quantity" class="form-control" autocomplete="off"/>
+          <input type="text" name="quantityExternalUPC" id="quantityExternalUPC" class="form-control" autocomplete="off"/>
           <span id="valid_quantity"></span>
           <br />
           <label>If the image is incorrect, find one online, and paste over the provided link below.</label>
-          <input type="text" name="image_location" id="image_location" class="form-control" autocomplete="off" />
+          <input type="text" name="imageLocationExternalUPC" id="imageLocationExternalUPC" class="form-control" autocomplete="off" />
           <br />
-          <span id="addUPCimage"></span>
+          <img id="showImageExternalUPC" name = "showImageExternalUPC" style ="display: block; margin-left: auto; margin-right: auto; max-width: 150px; max-height: 150px; object-fit: scale-down;">
           <br />
         </div>
         <div class="modal-footer">
