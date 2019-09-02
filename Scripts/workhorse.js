@@ -230,11 +230,13 @@ AJAX_TO_DATABASE = {
                     outer_upc_var: lv_foundExternalUPC.toString(),
                     outer_descript_var: lv_descriptionExternalUPC.toString(),
                     outer_quant_var: lv_quantityExternalUPC.toString(),
+                    outer_type_var:lv_foodTypeExternalUPC.toString(),
                     outer_image_var: lv_imageLocationExternalUPC.toString(),
                 };
                 var type_of_insertion = "SQL_Insert";
+                console.log(JSON.stringify(inc_insert_obj));
                 $.getScript("http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js", function(type_of_insertion, inc_obj) {
-
+                    alert(JSON.stringify(inc_insert_obj));
                     let insert_html = alert_type_summon_arguments(type_of_insertion, inc_insert_obj);
                     console.log(insert_html);
                     $("#returned_update").html(insert_html);
