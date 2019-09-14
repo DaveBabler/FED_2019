@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script type="text/javascript" src="Credential\credential_workhorse.js"></script>
     <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/workhorse.js"></script>
-    <!-- <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js"></script> -->
+    <script type="text/javascript" src="http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js"></script>
 
     <link rel="stylesheet" type="text/css" href="http://dbabler.yaacotu.com/FED_2020/css/interfaceGrid.css">
 
@@ -222,7 +222,7 @@
 </html>
 
 <script type="text/javascript" language="javascript" >
-
+var inserted_object
  
   
 
@@ -245,6 +245,14 @@
         ],
         });  
   } 
+
+  $("#insertExternalUPC").on("click", function(e){
+          insertedObject =  AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
+         let type_of_insertion = "SQL_Insert";
+        $("#returned_update").html("<b>fuck you</b>");
+        $("#insert_succeed_box").show();
+      });
+      
   $(document).ready(function(){
     var upcDigitCounter = 0;
     $('#inventory_table').DataTable().destroy();
@@ -273,10 +281,8 @@
       /** We want things to be able to close */
         $(this).parent().hide();
      });
-    $("#insertExternalUPC").on("click", function(e){
-          AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
-      });
 
+/* 
     $("#manualUPCcheck").on("click", function(){
              let lv_foundExternalUPC = "0123456879";
             let lv_descriptionExternalUPC = "something";
@@ -303,7 +309,7 @@
         }); 
 
 
-    });
+    }); */
     
   });
 
