@@ -221,6 +221,25 @@ AJAX_TO_DATABASE = {
                     console.log("found external UPC inside of the success function " + lv_foundExternalUPC);
                     successFlag = true;
                     alert("Success flag = " + successFlag);
+                    ///insert the new promise here
+                    if(insertMessage.success == 1){
+                        ALERT_MANIPULATION.successfulInsertAjax("insert", insertMessage)
+                        .done(function(result){
+                            $("#returned_update").append(result);
+                            $("#insert_succeed_box").show();
+
+                            setTimeout(() => {
+                                $("#insert_succeed_box").slideUp(2000);
+                                //close alert
+                                $("#insert_succeed_box").click()l
+                            }, 3000);
+                            
+                        });
+
+                    }
+
+
+                    
 
 
                 },
@@ -466,5 +485,25 @@ ALERT_MANIPULATION = {
 /*                 $("#returned_update").fadeTo(5000, 500).slideUp(500, function() {
             $("#returned_update").slideUp(500);
         }); */
+    }, 
+
+    successfulInsertAjax: function(type_of_insertion, incoming_inserted_obj){
+        return $.ajax({
+            type: "POST", 
+            url: "http://dbabler.yaacotu.com/FED_2020/Scripts/PHP/serverTextBuilder.php",
+            data: {
+                alertType: type_of_insertion, 
+                UPC: incoming_inserted_obj.UPC, 
+                description: incoming_inserted_obj.description, 
+                quantity: incoming_inserted_obj.quantity,
+                previousQuantity: null, 
+                image: incoming_inserted_obj.image,
+            }, 
+            dataType: "text",
+            success: function(data){
+                
+            }
+            //data will be returned to a different function
+        });
     }
 }

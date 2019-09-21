@@ -66,13 +66,26 @@ if(isset($_POST["operation"]))
                 )
             );
             if(!empty($result)){
-                echo json_encode('Data Inserted.');
+                $returnedData = array(
+                    'success' => 1, 
+                    'description'	=>	$_POST["descriptionExternalUPC"],
+				    'quantity'	    =>	$_POST["quantityExternalUPC"],
+				    'image'		    =>	$_POST["imageLocationExternalUPC"],
+                    'UPC'			=>	$lv_UPC,
+                    'type_id'       =>  $_POST["foodTypeExternalUPC"]
+                    
+                );
+
+
             } 
         }
         else{
-            echo json_encode(' Data not Inserted');
+            $returnedData = array(
+                'success' => 0,
+            );
         }
-	}
+        echo json_encode($returnedData);
+    }
 
 	if($_POST["operation"] == "Edit")
 	{

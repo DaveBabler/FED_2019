@@ -248,9 +248,7 @@ var inserted_object
 
   $("#insertExternalUPC").on("click", function(e){
           insertedObject =  AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
-         let type_of_insertion = "SQL_Insert";
-        $("#returned_update").html("<b>fuck you</b>");
-        $("#insert_succeed_box").show();
+         let type_of_insertion = "SQL_Insert";  //why is this here? DAB
       });
       
   $(document).ready(function(){
