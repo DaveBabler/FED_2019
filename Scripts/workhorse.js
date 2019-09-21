@@ -222,55 +222,28 @@ AJAX_TO_DATABASE = {
                     successFlag = true;
                     alert("Success flag = " + successFlag);
                     ///insert the new promise here
-                    if(insertMessage.success == 1){
+                    if (insertMessage.success == 1) {
                         ALERT_MANIPULATION.successfulInsertAjax("insert", insertMessage)
-                        .done(function(result){
-                            $("#returned_update").append(result);
-                            $("#insert_succeed_box").show();
+                            .done(function(result) {
+                                $("#returned_update").append(result);
+                                $("#insert_succeed_box").show();
 
-                            setTimeout(() => {
-                                $("#insert_succeed_box").slideUp(2000);
-                                //close alert
-                                $("#insert_succeed_box").click()l
-                            }, 3000);
-                            
-                        });
+                                setTimeout(() => {
+                                    //$("#insert_succeed_box").slideUp(2000);
+                                    //close alert
+                                    // $("#insert_succeed_box").click();
+                                }, 3000);
+
+                            });
 
                     }
 
 
-                    
+
 
 
                 },
             });
-            if (successFlag) {
-                var inc_insert_obj = {
-                    outer_upc_var: lv_foundExternalUPC.toString(),
-                    outer_descript_var: lv_descriptionExternalUPC.toString(),
-                    outer_quant_var: lv_quantityExternalUPC.toString(),
-                    outer_type_var:lv_foodTypeExternalUPC.toString(),
-                    outer_image_var: lv_imageLocationExternalUPC.toString(),
-                };
-                var type_of_insertion = "SQL_Insert";
-   /*              console.log(JSON.stringify(inc_insert_obj));
-                $.getScript("http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js", function(type_of_insertion, inc_insert_obj) {
-                    alert(JSON.stringify(inc_insert_obj));
-                    var insert_html = alert_type_summon_arguments(type_of_insertion, inc_insert_obj);
-                    console.log(insert_html);
-                    $("#returned_update").html(insert_html);
-                });
-                $("#insert_succeed_box").show();
-                $("#returned_update").fadeTo(5000, 500).slideUp(500, function() {
-                    $("#returned_update").slideUp(500);
-                });
-                $('#inventory_table').DataTable().destroy();
-                load_data(); //1 */
-
-
-
-            }
-            return inc_insert_obj;
 
         },
     } //end AJAX_TO_DATABASE namespace
@@ -423,26 +396,26 @@ MODAL_MANIPULATION = {
         $("#showImageExternalUPC").attr("src", externalData.image_location);
     },
 
-    makePHPBuildModal: function (typeOfUpdate, externalData, passedUPC ){
-        if(typeOfUpdate == "insert"){
-        return $.ajax({
-            type: "POST", 
-            url: "http://dbabler.yaacotu.com/FED_2020/Scripts/PHP/serverTextBuilder.php", 
-            data:{
-                alertType: typeOfUpdate,
-                UPC: passedUPC, 
-                description: externalData.description,
-                quantity: externalData.quantity,
-                previousQuantity: null, //need to set this to prevent errors?
-                image: externalData.image_location,
+    makePHPBuildModal: function(typeOfUpdate, externalData, passedUPC) {
+        if (typeOfUpdate == "insert") {
+            return $.ajax({
+                type: "POST",
+                url: "http://dbabler.yaacotu.com/FED_2020/Scripts/PHP/serverTextBuilder.php",
+                data: {
+                    alertType: typeOfUpdate,
+                    UPC: passedUPC,
+                    description: externalData.description,
+                    quantity: externalData.quantity,
+                    previousQuantity: null, //need to set this to prevent errors?
+                    image: externalData.image_location,
 
-            }, 
-            dataType:"text", 
-            success: function (data){
-                //"data" will be returned to a different function 
-            }
-        })
-    }
+                },
+                dataType: "text",
+                success: function(data) {
+                    //"data" will be returned to a different function 
+                }
+            })
+        }
     }
 
 }
@@ -474,7 +447,7 @@ OTHER_FILES = {
 }
 
 ALERT_MANIPULATION = {
-    successfulInsert: function(type_of_insertion, inc_insert_obj){
+    successfulInsert: function(type_of_insertion, inc_insert_obj) {
         $.getScript("http://dbabler.yaacotu.com/FED_2020/Scripts/string_building.js", function() {
             alert(JSON.stringify(inc_insert_obj));
             var insert_html = alert_type_summon_arguments(type_of_insertion, inc_insert_obj);
@@ -482,28 +455,28 @@ ALERT_MANIPULATION = {
             $("#returned_update").html(insert_html);
         });
         $("#insert_succeed_box").show();
-/*                 $("#returned_update").fadeTo(5000, 500).slideUp(500, function() {
-            $("#returned_update").slideUp(500);
-        }); */
-    }, 
+        /*                 $("#returned_update").fadeTo(5000, 500).slideUp(500, function() {
+                    $("#returned_update").slideUp(500);
+                }); */
+    },
 
-    successfulInsertAjax: function(type_of_insertion, incoming_inserted_obj){
+    successfulInsertAjax: function(type_of_insertion, incoming_inserted_obj) {
         return $.ajax({
-            type: "POST", 
-            url: "http://dbabler.yaacotu.com/FED_2020/Scripts/PHP/serverTextBuilder.php",
+            type: "POST",
+            url: "http://dbabler.yaacotu.com/FED_2020/Scripts/PHP/customClasses.php",
             data: {
-                alertType: type_of_insertion, 
-                UPC: incoming_inserted_obj.UPC, 
-                description: incoming_inserted_obj.description, 
+                alertType: type_of_insertion,
+                UPC: incoming_inserted_obj.UPC,
+                description: incoming_inserted_obj.description,
                 quantity: incoming_inserted_obj.quantity,
-                previousQuantity: null, 
+                previousQuantity: null,
                 image: incoming_inserted_obj.image,
-            }, 
+            },
             dataType: "text",
-            success: function(data){
-                
-            }
-            //data will be returned to a different function
+            success: function(data) {
+
+                }
+                //data will be returned to a different function
         });
     }
 }

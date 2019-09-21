@@ -109,9 +109,9 @@ class FEDBootstrapBuilding{
     }
 
     private static function _setAlertData($preppedUPC, $preppedDescription, $preppedQuantity, $preppedImage){
-        $preppedURL = START_ALERT_HTML_TABLE . $preppedUPC . $preppedDescription . $preppedQuantity;
-        $preppedURL .= $preppedImage . END_ALERT_HTML_TABLE;
-        self::$alertData = $preppedURL
+        $preppedURL = self::START_ALERT_HTML_TABLE . $preppedUPC . $preppedDescription . $preppedQuantity;
+        $preppedURL .= $preppedImage . self::END_ALERT_HTML_TABLE;
+        self::$alertData = $preppedURL;
     }
     private static function _getAlertData(){
         return self::$alertData;
@@ -137,7 +137,24 @@ class FEDBootstrapBuilding{
         return $outGoingData;    
     }
 
-}
 
+  
+
+}
+/* $test = FEDBootstrapBuilding::buildAlert("insert", "123456", "Some shoe", 50, null, "https://dks.scene7.com/is/image/GolfGalaxy/17ADIMXPLRBLKWHTXLFS_White_Core_Black?wid=1080&fmt=jpg" );
+echo $test; */
+if($_REQUEST["alertType"] == "insert"){
+    $alertType = $_REQUEST["alertType"];
+    $UPC = $_REQUEST["UPC"];
+    $description = $_REQUEST["description"];
+    $quantity = $_REQUEST["quantity"];
+    $previousQuantity = NULL; //we have nothing for this could pass request null but why?
+    $image = $_REQUEST["image"];
+    $returnedData = NULL;
+
+    $returnedData = FEDBootstrapBuilding::buildAlert($alertType, $UPC, $description, $quantity, $previousQuantity, $image);
+
+    echo $returnedData;
+}
 
 ?>
