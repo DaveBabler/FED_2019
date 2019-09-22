@@ -235,7 +235,7 @@ AJAX_TO_DATABASE = {
                                     $("#insert_succeed_box").slideUp(1000);
                                     //close alert
                                     $("#insert_succeed_box").click();
-                                    $("#insert_succeed_box").html("");
+                                    $("#placedByjQuery").remove();
                                 }, 1000);
 
                             });

@@ -7,7 +7,7 @@ class FEDBootstrapBuilding{
      * Dave Babler
      * 2019-09-14
      */
-    const START_ALERT_HTML_TABLE = '<div class="table-responsive">
+    const START_ALERT_HTML_TABLE = '<div id=placedByjQuery" class="table-responsive">
     <table class="table-condensed"
     <tbody
     <tr>';
