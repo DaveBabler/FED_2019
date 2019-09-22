@@ -248,7 +248,9 @@ var inserted_object
   } 
 
   $("#insertExternalUPC").on("click", function(e){
+        e.preventDefault();
           insertedObject =  AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
+   //$(this).parent().parent().hide();
          let type_of_insertion = "SQL_Insert";  //why is this here? DAB
       });
       
@@ -278,7 +280,7 @@ var inserted_object
 
     $('.alert .close').on('click', function(e) {
       /** We want things to be able to close */
-        $(this).parent().hide();
+
      });
 
 /* 

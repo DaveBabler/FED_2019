@@ -178,6 +178,7 @@ AJAX_TO_DATABASE = {
                                 show: false
                             });
                             $("#userModal").modal('hide');
+                            $("#addFoundExternalUpc").show();
 
                             $("#addFoundExternalUpc").modal({
                                 show: true
@@ -220,19 +221,22 @@ AJAX_TO_DATABASE = {
                     /**Output the stringbuilding function */
                     console.log("found external UPC inside of the success function " + lv_foundExternalUPC);
                     successFlag = true;
-                    alert("Success flag = " + successFlag);
+                    //alert("Success flag = " + successFlag);
                     ///insert the new promise here
                     if (insertMessage.success == 1) {
                         ALERT_MANIPULATION.successfulInsertAjax("insert", insertMessage)
                             .done(function(result) {
                                 $("#returned_update").append(result);
                                 $("#insert_succeed_box").show();
+                                $("#addFoundExternalUpc").toggle();
+                                $('.modal-backdrop').remove();
 
                                 setTimeout(() => {
-                                    //$("#insert_succeed_box").slideUp(2000);
+                                    $("#insert_succeed_box").slideUp(1000);
                                     //close alert
-                                    // $("#insert_succeed_box").click();
-                                }, 3000);
+                                    $("#insert_succeed_box").click();
+                                    $("#insert_succeed_box").html("");
+                                }, 1000);
 
                             });
 
