@@ -213,7 +213,7 @@ AJAX_TO_DATABASE = {
                     'imageLocationExternalUPC': lv_imageLocationExternalUPC,
                     'foodTypeExternalUPC': lv_foodTypeExternalUPC,
                 },
-                async: false,
+                async: true,
                 dataType: "json",
                 success: function(insertMessage) {
                     console.log("You have successefully inserted: " + insertMessage);

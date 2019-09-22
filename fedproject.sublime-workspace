@@ -1,0 +1,849 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"zero",
+				"zeroQuantStatement"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"auto",
+				"autoCompleteFlag"
+			],
+			[
+				"autocom",
+				"autoCompletePopulateUPC"
+			],
+			[
+				"aut",
+				"autoCompleteItem"
+			],
+			[
+				"f",
+				"fed_db_creds_daveb"
+			],
+			[
+				"ROLE",
+				"ROLEID"
+			],
+			[
+				"GENER",
+				"generic_upc_gen_trig"
+			],
+			[
+				"upc",
+				"UPC_GENERATOR"
+			],
+			[
+				"GENR",
+				"generic_upc_gen_trig"
+			],
+			[
+				"PRINT",
+				"print_r"
+			],
+			[
+				"ac",
+				"action\tAttr"
+			],
+			[
+				"session",
+				"session_start"
+			],
+			[
+				"a",
+				"accesslevel"
+			],
+			[
+				"ema",
+				"emailFormat"
+			],
+			[
+				"em",
+				"emailErr"
+			],
+			[
+				"is",
+				"isset"
+			],
+			[
+				"EMA",
+				"emailFormat"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"eam",
+				"emailFormat"
+			],
+			[
+				"email",
+				"emailFormat"
+			],
+			[
+				"EM",
+				"emailEntry"
+			],
+			[
+				"inclu",
+				"include_test"
+			],
+			[
+				"cle",
+				"cleanse_data"
+			],
+			[
+				"va",
+				"valEmailEntry"
+			],
+			[
+				"html",
+				"htmlspecialchars"
+			],
+			[
+				"ACC",
+				"accesslevel"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"emai",
+				"emailErr"
+			],
+			[
+				"PASS",
+				"passErr"
+			],
+			[
+				"EMAIL",
+				"emailErr"
+			],
+			[
+				"passE",
+				"passEntry"
+			],
+			[
+				"pass",
+				"passEntry"
+			],
+			[
+				"acc",
+				"accessattempts"
+			],
+			[
+				"sub",
+				"submit"
+			],
+			[
+				"USER",
+				"USER_NAME"
+			],
+			[
+				"session_de",
+				"session_destroy"
+			],
+			[
+				"U",
+				"USER_NAME"
+			],
+			[
+				"large",
+				"larger\tfont-size"
+			],
+			[
+				"size",
+				"font-size\tproperty"
+			],
+			[
+				"Role",
+				"ROLE_NAME"
+			],
+			[
+				"TYPE",
+				"TYPE_TEXT"
+			],
+			[
+				"co",
+				"conn"
+			],
+			[
+				"lv",
+				"lv_newtotal"
+			],
+			[
+				"gra",
+				"GRAND_TOTAL"
+			],
+			[
+				"lv_",
+				"lv_percentfee"
+			],
+			[
+				"pvin",
+				"pv_invoiceid"
+			],
+			[
+				"PVIN",
+				"pv_invoiceid"
+			],
+			[
+				"pv",
+				"pv_card_no"
+			],
+			[
+				"PAY",
+				"PAYMENT_VERIFICATION"
+			],
+			[
+				"lvdecr",
+				"lv_decrypted_out"
+			],
+			[
+				"paymentt",
+				"PAYMENT_TYPE"
+			],
+			[
+				"Payment",
+				"Payment_TypeID"
+			],
+			[
+				"INV",
+				"InvoiceID"
+			],
+			[
+				"invoi",
+				"InvoiceID"
+			],
+			[
+				"VAR",
+				"VARCHAR2"
+			],
+			[
+				"ENCRYPT",
+				"ENCRYPT_CC"
+			],
+			[
+				"LV",
+				"lv_labid"
+			],
+			[
+				"p_vet_pro",
+				"p_vet_procid"
+			],
+			[
+				"P_VET_PRO",
+				"p_vet_procid"
+			],
+			[
+				"lv_proc",
+				"lv_proccost"
+			],
+			[
+				"null",
+				"NULL"
+			],
+			[
+				"E",
+				"e_nocosts"
+			],
+			[
+				"pin",
+				"p_indv_add_on_cost"
+			],
+			[
+				"pspecialt",
+				"p_specialty_add_on_cost"
+			],
+			[
+				"P_SP",
+				"p_specialty_add_on_cost"
+			],
+			[
+				"p_specialty",
+				"p_specialty_add_on_cost"
+			],
+			[
+				"p_lab",
+				"p_lab_cost"
+			],
+			[
+				"p_",
+				"p_invid"
+			],
+			[
+				"petid",
+				"PETID"
+			],
+			[
+				"INVOICE",
+				"INVOICEID"
+			],
+			[
+				"dru",
+				"DRUG_COST_PER_UNIT"
+			],
+			[
+				"vet",
+				"VET_PROCEDURE"
+			],
+			[
+				"e_",
+				"e_toomany"
+			],
+			[
+				"LINE",
+				"LINE_SUBTOTAL"
+			],
+			[
+				"vetpro",
+				"lv_vet_procedureid"
+			],
+			[
+				"lvsp",
+				"lv_specialty_add_on_cost"
+			],
+			[
+				"special",
+				"SPECIALTYID"
+			],
+			[
+				"LV_SPE",
+				"lv_specialty_add_on_cost"
+			],
+			[
+				"pvet",
+				"p_vetid"
+			],
+			[
+				"LVSP",
+				"lv_specialty_add_on_cost"
+			],
+			[
+				"psp",
+				"p_specialized"
+			],
+			[
+				"VET",
+				"p_vetprocid"
+			],
+			[
+				"lv_lab",
+				"lv_lab_cost"
+			],
+			[
+				"LVLAB",
+				"lv_lab_cost"
+			],
+			[
+				"DRUG",
+				"Drug_Units_Prescribed"
+			],
+			[
+				"PDRUG",
+				"p_drug_units_rxd"
+			],
+			[
+				"vET",
+				"Vet_ProcedureID"
+			],
+			[
+				"SPE",
+				"SpecialtyID"
+			],
+			[
+				"ra",
+				"RADIOLOGY_HISTORY"
+			],
+			[
+				"enc",
+				"ENCOUNTER_HISTORY"
+			],
+			[
+				"radim",
+				"RADIMG_DATE_TAKEN"
+			],
+			[
+				"lv_flag",
+				"lv_flag_avian"
+			],
+			[
+				"owner",
+				"OWNERID"
+			],
+			[
+				"func",
+				"FUNC_FLTXTCHART"
+			],
+			[
+				"FU",
+				"FUNC_FLTXTCHART"
+			],
+			[
+				"v",
+				"varchar2"
+			],
+			[
+				"RA",
+				"RADIMG_NOTES"
+			],
+			[
+				"LVCHAR",
+				"lv_chartline"
+			],
+			[
+				"lvchart",
+				"lv_chartsibs"
+			],
+			[
+				"lvfel",
+				"lv_feline"
+			],
+			[
+				"lvcl",
+				"lv_full_clob"
+			],
+			[
+				"LVCLOB",
+				"lv_clob_body"
+			],
+			[
+				"lv_clob",
+				"lv_clob_head"
+			],
+			[
+				"LVDRUG",
+				"lv_drugname"
+			],
+			[
+				"drug",
+				"DRUG_NAME"
+			],
+			[
+				"cur",
+				"cur_rxinfo_dist"
+			],
+			[
+				"lvmain",
+				"lv_maint_count"
+			],
+			[
+				"d",
+				"DRUG_NAME"
+			],
+			[
+				"lvdrug",
+				"lv_drugname"
+			],
+			[
+				"lv_du",
+				"lv_unitsrxd"
+			],
+			[
+				"PET",
+				"PET_NAME"
+			],
+			[
+				"ch",
+				"CHR"
+			],
+			[
+				"eve",
+				"EVENT_DATE"
+			],
+			[
+				"FPROC",
+				"f_procid"
+			],
+			[
+				"VETPR",
+				"VET_PROCEDURE_HISTORY"
+			],
+			[
+				"VET_",
+				"VET_PROCEDURE_NAME"
+			],
+			[
+				"VET_PROCEDURE",
+				"VET_PROCEDURE_HISTORY"
+			],
+			[
+				"RADIM",
+				"RADIMG_DATE_TAKEN"
+			],
+			[
+				"ENCOU",
+				"ENCOUNTER_DATE_TIME"
+			],
+			[
+				"lva",
+				"lv_age"
+			],
+			[
+				"ANIMAL",
+				"ANIMAL_FACTS"
+			],
+			[
+				"FSPE",
+				"f_speciesid"
+			],
+			[
+				"B",
+				"BREED_NAME"
+			],
+			[
+				"b",
+				"BREEDID"
+			],
+			[
+				"p",
+				"Put_Stuff_Here"
+			],
+			[
+				"proc_",
+				"PROC_RX_VETPROC"
+			],
+			[
+				"PROC",
+				"PROC_RX_VETPROC"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 269.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ch",
+				"Snippet: checksnip"
+			],
+			[
+				"Package Control: install package",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: New Procedure"
+			],
+			[
+				"PACKAGE CONTROL: INST",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Preferences: Key Bindings - User"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 160.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019"
+	],
+	"file_history":
+	[
+		"/C/Users/Dabab/Downloads/forJustin.php",
+		"/C/xampp/php/php.ini",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/FURTHER_TESTING/testing.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/TEMP/1562468928.layoutit/layoutit/src/index.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/gridTest2.php",
+		"/C/Course Technology/90136-3/Chapter.01/c1Dbcreate.sql",
+		"/C/Users/Dabab/Documents/School/HCC/COP-1332-27779 Visual Basic Beginning/Assignements/02 - Pizza/Pizza Selection/Pizza Selection/frmPizzaSelection.vb",
+		"/C/Program Files (x86)/Adobe/Adobe Creative Cloud/FontsPanel/resource/ui/resources/css/fonts.css",
+		"/C/Users/Dabab/Documents/School/HCC/COP-1332-27779 Visual Basic Beginning/Assignements/03 - Flags/README.md",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/PULL_OUT_TO_SERVER/configtest.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/PULL_OUT_TO_SERVER/workplease.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/PULL_OUT_TO_SERVER/config.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/state_save.json",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/package-lock.json",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED_2019/fetch.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED_2019/inventoryCheckout.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedproject/fedproject/autocomplete.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Export.json",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Temp/throttling/inventoryCheckout.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/SQL Files/INV_TYPE.sql",
+		"/M/oms_project/Forms/MarketCountView.php",
+		"/C/Users/Dabab/AppData/Local/Temp/FFS-9bc915d1/capture_data-dcbf.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/Credential/test.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/fedhccdb_credentialer.sql",
+		"/C/Users/Dabab/Documents/Central Pasco Dem/email.txt",
+		"/C/xampp/htdocs/bs_post/get.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/07 - Process Forms/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/hwFEDdb - Babler Homework/index.php",
+		"/C/Users/Dabab/AppData/Local/Temp/Temp1_hwFEDdb.zip/hwFEDdb/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/hwFEDdb/retrieveDB.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/hwFEDdb/updateDB.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/hwFEDdb - Babler Homework/retrieveDB.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/fedInventory.sql",
+		"/C/xampp/htdocs/ajax/select/select.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/hwFEDdb/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/09 - Errors Advanced Validation and APIs/hwFEDdb/connect.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/Sandbox/welcome.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/Sandbox/test.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/Sandbox/posttest1.html",
+		"/C/xampp/include_test/CredCheck.php",
+		"/C/xampp/htdocs/FED/testsingle.php",
+		"/C/xampp/htdocs/FED/Includes/db.php",
+		"/C/xampp/htdocs/FED/index.php",
+		"/C/xampp/htdocs/FED/test2-msqli_fetch_row.php",
+		"/C/xampp/htdocs/ajax/select/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/08 - Validate/valid-babler.php",
+		"/C/xampp/htdocs/ajax/insert/index.php",
+		"/C/Users/Dabab/AppData/Local/Temp/Temp1_controlling_execution_plans_2015 (2).zip/baseline_hints.sql",
+		"/C/xampp/htdocs/ajax/start/index.php",
+		"/C/xampp/htdocs/ajax/select.php",
+		"/C/xampp/htdocs/ajax/insert.php",
+		"/C/xampp/htdocs/ajax/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/db.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/db.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/FED_2019/bootstrap.css",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/PHPScoresTest/PHPandMySQLHighLow/getScores.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/PHPScoresTest/PHPandMySQLHighLow/scores.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/FED_2019/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/FED_2019/db.php",
+		"/C/xampp/htdocs/FED/PHPandMySQLHighLow/scores.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/FED_2019/bootstrap-theme.min.css.map",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/FED_2019/bootstrap-theme.css",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/FED_2019/index.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/PHPScoresTest/PHPandMySQLHighLow/config.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/11 - Inventory/fed_db.sql",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Git Training Udacity/version-control/create-your-own-adventure/english/racquetball/raquetball.md",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Git Training Udacity/version-control/create-your-own-adventure/english/cricket/cricket.md",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Git Training Udacity/version-control/create-your-own-adventure/english/racquetball/nogoggles.md",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Git Training Udacity/version-control/create-your-own-adventure/english/racquetball/allequpiment.md",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Assignments/01 - Getting Started/quickstart.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Git Training Udacity/version-control/create-your-own-adventure/english/cricket/if-you-love-cricket/ifyoulovecricket.md",
+		"/C/Users/Dabab/Documents/ACLMV__BASE_VIEW.sql",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Git Training Udacity/problem sets/PS1/pappu-pakia/.git/hooks/applypatch-msg.sample",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FTPSync/testing/testing.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/testcall.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/include_test/DefinedFunctions.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_final/testcall.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_final/Update.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Untitled2-548d.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dan_test/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/drm/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/drm/worksaspost.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dan_test/displayinventory.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/testcall.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/test.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/volunteer_home.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/recipient_home.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/administrator_home.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/fed_db_project.sublime-project",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test2/fed_db_project.sublime-workspace",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/Login/data/users.sql",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/Login/html/index.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/Login/html/login.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/include_test/FEDCheck.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/db.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Readings/how to use a header row to make field map.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/register.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/indexUI.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/test2-msqli_fetch_row.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/testoutprocedural.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/dave_test/checkboxes.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/Inventory/index.js",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/fedhcc.yaacotu.com/Inventory/ViewInventory.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/Readings/how to do a checkdigit.php",
+		"/C/xampp/htdocs/work/com/salesmatchreport/default.php",
+		"/C/xampp/htdocs/work/com/salesmatchreport/index.php",
+		"/C/xampp/htdocs/work/com/adm_file/validate.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/administrator_home.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/volunteer_home.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/patron_home.html",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/common.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/XAMPP Includes/FEDCheck.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/getincludes.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/testsingle.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/testscs.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/XAMPP Includes/CredCheck.php",
+		"/C/Users/Dabab/AppData/Local/Temp/FFS-ccc7b055/CredCheck-f45c.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/testcall_backup.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/testwithswitchwontwork.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/testcall.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/test.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/Local XAMPP Sync/test2-msqli_fetch_row.php",
+		"/C/xampp/test/test.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/SQL Files/CREDENTIAL TABLES.sql",
+		"/C/xampp/htdocs/dbWIP/updatecompanies01.php",
+		"/C/xampp/htdocs/dbWIP/selectJoin_Demo.php~",
+		"/C/xampp/htdocs/dbWIP/selectJoin_Demo.php",
+		"/C/Users/Dabab/Documents/School/HCC/COP-2836-13820 Databse Drvn Web Prgm Server/FED/XAMPP Includes/dbConfig1.php"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 116.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 126.0
+	},
+	"pinned_build_system": "",
+	"project": "fedproject.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}

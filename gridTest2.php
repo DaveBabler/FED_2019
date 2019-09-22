@@ -230,6 +230,7 @@ var inserted_object
         var dataTable = $('#inventory_table').DataTable({
         "processing":true,
         "serverSide":true,
+        //"deferLoading": 0, 
         "order":[],
         "ajax":{
             url:'/FED_2020/Scripts/DB/fetch.php',
