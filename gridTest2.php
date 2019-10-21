@@ -175,8 +175,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">UPC found in external database!</h3><br>
-          <span>Please verify all information is correct before clicking "Add".</span>
+          <h3 class="modal-title" id="addFoundExternalUpcHeader" name="addFoundExternalUpcHeader">UPC found in external database!</h3><br>
+          <span id = "addFoundExternalUpcName" name="addFoundExternalUpcName">Please verify all information is correct before clicking "Add".</span>
         </div>
         <div class="modal-body">
           <i class="fas fa-times-circle" style="display:none;"></i>
@@ -311,7 +311,8 @@ var inserted_object
 
 
     }); */
-    
+    //valid but unfound UPC examples can be made here https://www.gtin.info/check-digit-calculator/
+    //current use 000123687911
   });
 
 

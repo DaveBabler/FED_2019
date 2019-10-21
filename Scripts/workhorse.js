@@ -168,22 +168,44 @@ AJAX_TO_DATABASE = {
                     let isUPCValid = parseInt(upcReturnedInfo.valid_upc, 10);
                     let doesUPCExist = parseInt(upcReturnedInfo.upc_exists, 10);
                     let wasDataCapturedForUPC = parseInt(upcReturnedInfo.data_captured, 10);
+
+                    //need to wrap all these ifs in an if statement for invalid UPC that jumps directly to 
+                    //the feature of creating an "inhouse" UPC
                     if ((isUPCValid) == 1) {
                         /**Checking the flag to see if the upc is valid */
                         if (upcReturnedInfo.upc_exists == 0) {
                             /** If the UPC does not exist in our database then it needs to be added.
                              * so we will run that module.
                              */
-                            $("#userModal").modal({
-                                show: false
-                            });
-                            $("#userModal").modal('hide');
-                            $("#addFoundExternalUpc").show();
+                            if (upcReturnedInfo.data_captured == 0) {
+                                /**  If data is not captured by the APIs and the UPC is valid we will need to provide more
+                                explicit instructions*/
+                                $("#userModal").modal({
+                                    show: false
+                                });
+                                $("#userModal").modal('hide');
+                                //show better instructions in the headeer
+                                $("#addFoundExternalUpcHeader").text("UPC Valid, but not found in any known database!");
+                                $("#addFoundExternalUpcName").html("You must enter in <b>all</b> information manually to proceed. <br> This will only need to be done once per unkonwn UPC!");
+                                $("#addFoundExternalUpc").show();
 
-                            $("#addFoundExternalUpc").modal({
-                                show: true
-                            });
-                            MODAL_MANIPULATION.foundExternalUPCModalFiller(upcReturnedInfo, upcEntry);
+                                $("#addFoundExternalUpc").modal({
+                                    show: true
+                                });
+
+                            } else {
+                                //if data is captured show the modal
+                                $("#userModal").modal({
+                                    show: false
+                                });
+                                $("#userModal").modal('hide');
+                                $("#addFoundExternalUpc").show();
+
+                                $("#addFoundExternalUpc").modal({
+                                    show: true
+                                });
+                                MODAL_MANIPULATION.foundExternalUPCModalFiller(upcReturnedInfo, upcEntry);
+                            }
 
 
                         }
@@ -391,6 +413,10 @@ INPUT_CONTROLS = {
 
 
 MODAL_MANIPULATION = {
+
+    //Attn: Babler, you found an interesting way of manipulating the modal 
+    //here-- http://jsfiddle.net/bhumi/hw154nda/1/
+    //check it out 2019-10-20
 
     foundExternalUPCModalFiller: function(externalData, passedUPC) {
         $("#foundExternalUPC").text(passedUPC);
