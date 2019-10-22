@@ -263,15 +263,29 @@ AJAX_TO_DATABASE = {
                             });
 
                     }
-
-
-
-
-
                 },
             });
 
         },
+        ajaxGenerateNewUPC: function() {
+
+            /**Dear future debuggers. I'm going to have to use another Promise here, I'm so sorry.
+             * Please know you are loved, and this was done out of necessity. --Dave Babler */
+            let typeOfRequest = "generatedUPC";
+            $.ajax({
+                type: "POST",
+                url: '/FED_2020/Scripts/DB/insert.php',
+                data: {
+                    informationNeeded: typeOfRequest,
+                },
+                success: function(returnedData) {
+                    console.log(JSON.stringify(returnedData));
+                }
+
+            });
+
+
+        }
     } //end AJAX_TO_DATABASE namespace
 
 

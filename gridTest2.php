@@ -150,7 +150,9 @@
                                       </div>
                                   </div>
                                   <div class="col-md-3">
-                                    <button type="button" id="manualUPCcheck" name="manualUPCcheck" class="btn btn-success">Button</button>
+                                    <button type="button" id="manualBadUPCStart" name="manualBadUPCStart" class="btn btn-success">I have no UPC</button>
+                                    <!-- This button is for when the user knows for a fact that they do not have a valid UPC, which is why the
+                                          id and name are listed as such  Dave Babler -->
                                   </div>
                                   <div class="col-md-3">
                                         <button type="button" class="btn btn-warning"  class="close" data-dismiss="modal">Cancel</button>
@@ -250,10 +252,16 @@ var inserted_object
   $("#insertExternalUPC").on("click", function(e){
         e.preventDefault();
           insertedObject =  AJAX_TO_DATABASE.ajaxExternallyFoundUPC();
-   //$(this).parent().parent().hide();
+        //$(this).parent().parent().hide();
          let type_of_insertion = "SQL_Insert";  //why is this here? DAB
       });
       
+
+      $("#manualBadUPCStart").on("click", function(e){
+    e.preventDefault();
+    AJAX_TO_DATABASE.ajaxGenerateNewUPC();
+
+  });
   $(document).ready(function(){
     var upcDigitCounter = 0;
     $('#inventory_table').DataTable().destroy();
