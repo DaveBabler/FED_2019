@@ -259,7 +259,8 @@ var inserted_object
 
       $("#manualBadUPCStart").on("click", function(e){
     e.preventDefault();
-    AJAX_TO_DATABASE.ajaxGenerateNewUPC();
+    let testVar = AJAX_TO_DATABASE.ajaxGenerateNewUPC();
+    alert("The new UPC  is: " + testVar + "\r\n now it's time to set this button to open up \r\n a new modal that allows data to be filled in");
 
   });
   $(document).ready(function(){

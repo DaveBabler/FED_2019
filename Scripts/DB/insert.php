@@ -161,9 +161,9 @@ if(isset($_POST["operation"]))
               $resultData['NewUPC'] = Encoding::toUTF8($row['NewUPC']); //I had to implement this because of a encoding error
               //fun fact $row[NewUPC] is equivalent to $row['NewUPC'] try it!
 
-              $dataHoldingTank[] = $resultData;
+              
          }
-        echo json_encode($dataHoldingTank); 
+        echo json_encode($resultData); 
 
      }catch(PDOException $ex) {
         echo json_encode($ex->getMessage());

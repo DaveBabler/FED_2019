@@ -268,22 +268,27 @@ AJAX_TO_DATABASE = {
 
         },
         ajaxGenerateNewUPC: function() {
-
-            /**Dear future debuggers. I'm going to have to use another Promise here, I'm so sorry.
+            var returnedNewUPC = null;
+            /**Dear future debuggers. I'm eventually going to have to use another Promise here, 
+             * as asyng:false has been depreciated. I'm so sorry.
              * Please know you are loved, and this was done out of necessity. --Dave Babler */
             let typeOfRequest = "generatedUPC";
             $.ajax({
                 type: "POST",
+                async: false,
                 url: '/FED_2020/Scripts/DB/insert.php',
                 data: {
                     informationNeeded: typeOfRequest,
                 },
                 success: function(returnedData) {
-                    console.log(JSON.stringify(returnedData));
+                    output = JSON.parse(returnedData);
+                    returnedNewUPC = output.NewUPC;
+                    console.log(returnedNewUPC);
+
                 }
 
             });
-
+            return returnedNewUPC;
 
         }
     } //end AJAX_TO_DATABASE namespace
