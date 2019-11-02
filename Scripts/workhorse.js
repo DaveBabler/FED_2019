@@ -493,7 +493,13 @@ MODAL_MANIPULATION = {
         $("#foundACQuantity").val(item.cartQuantity);
         $("#foundACImage").append(FRONT_OF_IMAGE_TAG + item.cartImage + END_OF_IMAGE_TAG);
 
+    },
+
+    acInventoryModalClear: function() {
+        const ARR_OF_DIV_IDS = ["foundACUPC", "foundACQuantity", "foundACImage", "inventoryACSearch"];
+        TEXT_AND_VALUE_MANIPULATION.clearEntries(ARR_OF_DIV_IDS);
     }
+
 
 }
 
@@ -556,4 +562,19 @@ ALERT_MANIPULATION = {
                 //data will be returned to a different function
         });
     }
+}
+
+TEXT_AND_VALUE_MANIPULATION = {
+    clearEntries: function(arrayOfIDs) {
+        /**This function allows you to pass an array
+         * of ids to it it will then clear the text and values from those divs
+         * Dave Babler
+         */
+        arrayOfIDs.forEach(function(item, index) {
+            $('#' + item).html('');
+            $('#' + item).val(null);
+        });
+    },
+
+
 }

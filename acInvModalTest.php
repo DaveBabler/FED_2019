@@ -211,6 +211,10 @@ $(document).ready(function(){
         }
    });
 
+   $('#clearTextSearchModal').on('click', function(){
+    MODAL_MANIPULATION.acInventoryModalClear();
+   });
+
 }); //end $(document).ready(function)
 
 </script>
