@@ -33,54 +33,6 @@
           background-color:#f1f1f1;
       }
 
-      ui-autocomplete {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1510 !important;
-  float: left;
-  display: none;
-  min-width: 160px;
-  width: 160px;
-  padding: 4px 0;
-  margin: 2px 0 0 0;
-  list-style: none;
-  background-color: #ffffff;
-  border-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 1px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
-}
-.ui-menu-item > a.ui-corner-all {
-    display: block;
-    padding: 3px 15px;
-    clear: both;
-    font-weight: normal;
-    line-height: 18px;
-    color: #555555;
-    white-space: nowrap;
-    text-decoration: none;
-}
-.ui-state-hover, .ui-state-active {
-      color: #ffffff;
-      text-decoration: none;
-      background-color: #0088cc;
-      border-radius: 0px;
-      -webkit-border-radius: 0px;
-      -moz-border-radius: 0px;
-      background-image: none;
-}
       .box {
           width:90%;
           padding:20px;
@@ -114,6 +66,12 @@
       div.dataTables_wrapper div.dataTables_filter input {
           width: 400px;
       }
+
+      .ui-autocomplete {
+    position: absolute;
+    z-index: 5000;
+}
+
     </style>
   </head>
 <body>
@@ -148,9 +106,10 @@
                                 <div class="form-group">
                                         <label class="col-md-4 control-label" for="inventoryACSearch"></label>
                                         <div class="col-md-8">
-                                        <input id="inventoryACSearch" name="inventoryACSearch" type="search" placeholder="e.x. Lenny &amp; Larry protein brownies" class="form-control input-md">
-                                        <p class="help-block">Type what you're looking for here, it will start searching immediately.</p>
-                                        </div>
+                                            <div id="acWrapper" name="acWrapper" class="ui-front">
+                                        <input type="text" class ="form-control input-md" id="inventoryACSearch" name="inventoryACSearch" type="search" placeholder="e.x. Lenny &amp; Larry protein brownies"  autocomplete="off">
+                                    </div>   
+                                    </div>
                                 </div>
                                     
                                     <!-- Prepended text-->
@@ -204,6 +163,39 @@ var entry = null;
 $(document).ready(function(){
    
 
+    $('#inventoryACSearch').autocomplete({
+        appendTo: "#acWrapper", 
+       source: function (request, response){
+           $.ajax({
+               type:"POST", 
+               url:"/FED_2020/Scripts/DB/acLogic.php", 
+               data:{term:request.term}, 
+               dataType: 'json', 
+               minLength: 2,
+               delay: 100,
+               success: function(data){
+                   console.log("inside success event");
+                   console.log(data);
+                   response(data);
+               }
+
+           });
+       }, 
+       select: function (event, ui) {    
+        event.preventDefault();
+            console.log("inside select event");
+            console.log(ui);
+        return false;
+        },
+        response: function(event, ui){
+            //This is responsible for force selection when only one option
+            if(ui.content.length==1){
+                ui.item = ui.content[0];
+                $(this).data('ui-autocomplete')._trigger('select', 'autocompleteselect', ui);
+                $(this).autocomplete('close');
+            }
+        }
+   });
 
 }); //end $(document).ready(function)
 
