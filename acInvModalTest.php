@@ -74,86 +74,97 @@
 
     </style>
   </head>
-<body>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			 <a id="modal-InventoryTextSearchTop" href="#modal-modalInventoryTextSearch" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-			
-			<div class="modal fade" id="modal-modalInventoryTextSearch" role="dialog" aria-labelledby="inventoryCheckInTextSearch" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="myModalLabel">
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <a id="modal-InventoryTextSearchTop" href="#modal-modalInventoryTextSearch" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+                <div class="modal fade" id="modal-modalInventoryTextSearch" role="dialog" aria-labelledby="inventoryCheckInTextSearch" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">
 								UPC Invalid! 
-                            </h5> 
-                            <div class ="modal-header-body"><h6>
+                            </h5>
+                                <div class="modal-header-body">
+                                    <h6>
                                 Please try searching by text.  
                                 If you find something in the list that sounds correct choose it to verify!
                                 If your choice is correct update the quantity and press submit.
                                 If you choose the wrong item, press clear to search again.
                                 If you don't find anything, that's OK! 
                                 Simply chose the button "Generate UPC". </h6>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">×</span>
+                                </button>
                             </div>
-							<button type="button" class="close" data-dismiss="modal">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- Search input-->
 
-                                <!-- Search input-->
-                                
-                                <div class="form-group">
-                                        <label class="col-md-4 control-label" for="inventoryACSearch"></label>
-                                        <div class="col-md-8">
-                                            <div id="acWrapper" name="acWrapper" class="ui-front">
-                                        <input type="text" class ="form-control input-md" id="inventoryACSearch" name="inventoryACSearch" type="search" placeholder="e.x. Lenny &amp; Larry protein brownies"  autocomplete="off">
-                                    </div>   
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <div id="acWrapper" name="acWrapper" class="ui-front">
+                                                    <input type="text" class="form-control input-md" id="inventoryACSearch" name="inventoryACSearch" type="search" placeholder="e.x. Lenny &amp; Larry protein brownies" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                    
-                                    <!-- Prepended text-->
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <!-- Prepended text-->
                                         <div class="form-group">
                                             <span><label class="col-md-4 control-label" for="foundACUPC">UPC:</label></span>
-                                                <span id="foundACUPC" name="foundACUPC"></span>                                   
-                                        </div>
-                                    
-                                    <!-- Prepended text-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="foundACQuantity"></label>
-                                        <div class="col-md-4">
-                                         <div class="input-group">
-                                            <span class="input-group-addon">Qty.</span>
-                                            <input id="foundACQuantity" name="foundACQuantity" class="form-control" placeholder="" type="text">
-                                         </div>
-                                            <p class="help-block">Add new stock to existing stock, then enter.</p>
+                                            <span id="foundACUPC" name="foundACUPC"></span>
                                         </div>
                                     </div>
-                                                
-						    </div>
-						<div class="modal-footer">
-							 
-							<button type="button" class="btn btn-primary" id="submitItemByTextSearch" name="submitItemByTextSearch">
-								Submit
-                            </button> 
-                            <button type="button" class="btn btn-primary" id="clearTextSearchModal" name="clearTextSearchModal">
-                                    Clear to Search Again
-                            </button> 
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">
-								Close
-							</button>
-						</div>
-					</div>
-					
-				</div>
-				
-			</div>
-			
-		</div>
-	</div>
-</div>
-    </body>
+                                </div>
+                                <div class="row">
+                                        <!-- Prepended text-->
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Qty.</span>
+                                                    <input id="foundACQuantity" name="foundACQuantity" class="form-control" placeholder="" type="text">
+                                                </div>
+                                                <p class="help-block">Add new stock to existing stock, then enter.</p>
+                                            </div>
+                                        </div>
+                                </div>
+                                        <div class="form-group">
+                                            <div id="foundACImage">
+                                            </div>
+                                        </div>
+                                    </div>
 
+
+
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" id="submitItemByTextSearch" name="submitItemByTextSearch">
+                            Submit
+                        </button>
+                        <button type="button" class="btn btn-primary" id="clearTextSearchModal" name="clearTextSearchModal">
+                            Clear to Search Again
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
 
 <script>
 var entry = null;
@@ -183,8 +194,11 @@ $(document).ready(function(){
        }, 
        select: function (event, ui) {    
         event.preventDefault();
-            console.log("inside select event");
-            console.log(ui);
+
+            $("#inventoryACSearch").val(ui.item.value); //verify that what the person selected by textual display
+           AUTO_COMPLETE.inventoryCheckInWrapper(ui);
+
+            //how to select stuff console.log(ui.item.cartQuantity);
         return false;
         },
         response: function(event, ui){

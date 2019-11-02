@@ -340,7 +340,8 @@ AJAX_TO_DATATABLES = {
 AUTO_COMPLETE = {
     selectWrapper: function(ui) {
         /*wrapper function that goes in the jquery autocomplete select API
-          this function wraps up all the misc. functions that need to fire upon selection*/
+          this function wraps up all the misc. functions that need to fire upon selection
+          this wrapper is exclusively for checkout logic*/
         console.log("in select logic");
         console.log(ui.item);
         console.log("---------------------");
@@ -354,6 +355,17 @@ AUTO_COMPLETE = {
         $('#userEntry').val('');
         return false;
     },
+
+    inventoryCheckInWrapper: function(ui) {
+        /** This wrapper function exists in the (extremely likely) event 
+         * that stakeholders decide they want to have more logic shoved in here 
+         * This logic is what is activated upon selection by user or selection by 
+         * forced event on the inventory checkin autocomplete modal 
+         * NOTE: we don't pass the full ui object only the item selected, thus 'ui.item'
+         * Dave Babler*/
+        MODAL_MANIPULATION.acInventoryModalBuild(ui.item);
+
+    }
 
 
 }
@@ -465,6 +477,22 @@ MODAL_MANIPULATION = {
                 }
             })
         }
+    },
+    acInventoryModalBuild: function(item) {
+        /**This function fills in the UPC the Quantity, and (ideally) the 
+         * image for a selected auto complete item which allows the user to then 
+         * confirm if this is the correct item or move on to having a UPC generated for them. 
+         * A note on the prefix of "cart":
+         *      The PHP called for autocomplete was originally made for
+         *      an inventory checkout script.  This is still used, but it did not make sense
+         *      to fully rename that logic in this case.
+         */
+        const FRONT_OF_IMAGE_TAG = '<div><img src="';
+        const END_OF_IMAGE_TAG = '" class="img-thumbnail" style="display: block; margin-left: none; margin-right: auto; width: 75px; height: 75px; object-fit: scale-down;"></div>';
+        $("#foundACUPC").append("<b>" + item.cartUPC + "</b>");
+        $("#foundACQuantity").val(item.cartQuantity);
+        $("#foundACImage").append(FRONT_OF_IMAGE_TAG + item.cartImage + END_OF_IMAGE_TAG);
+
     }
 
 }
